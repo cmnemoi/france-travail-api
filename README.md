@@ -1,118 +1,55 @@
-# France Travail API SDK (Python)
+# France Travail API Python SDK
 
 [![Continuous Integration](https://github.com/cmnemoi/france_travail_api/actions/workflows/continuous_integration.yaml/badge.svg)](https://github.com/cmnemoi/france_travail_api/actions/workflows/continuous_integration.yaml)
 [![Continuous Delivery](https://github.com/cmnemoi/france_travail_api/actions/workflows/create_github_release.yaml/badge.svg)](https://github.com/cmnemoi/france_travail_api/actions/workflows/create_github_release.yaml)
 [![codecov](https://codecov.io/gh/cmnemoi/france_travail_api/graph/badge.svg?token=FLAARH38AG)](https://codecov.io/gh/cmnemoi/france_travail_api)
 
-Un SDK Python moderne et facile à utiliser pour l'API France Travail (anciennement Pôle Emploi).
+A high-level Python SDK to interact with the [France Travail API](https://francetravail.io/data/api).
 
-## Fonctionnalités
-
-- **Authentification gérée automatiquement** (Client Credentials Flow)
-- **Support Sync et Async** unifié
-- **Retry automatique** avec backoff exponentiel (gestion des 429 Too Many Requests)
-- **Pagination simplifiée** (itérateurs)
-- **Types forts** avec `dataclasses`
-- **Architecture extensible** (support multi-API prévu)
+# Quick start
 
 ## Installation
 
 ```bash
+python3 venv .france_travail_api
+source .france_travail_api/bin/activate
 pip install france-travail-api
 ```
 
-## Configuration
+## Authentication
 
-Vous avez besoin de vos identifiants Client ID et Client Secret disponibles sur le portail [France Travail](https://francetravail.io/).
+The SDK handles the OAuth2 Client Credentials Grant flow to authenticate with the API.
 
-Vous pouvez les fournir directement ou via des variables d'environnement :
-
-```bash
-export FRANCE_TRAVAIL_CLIENT_ID="votre_client_id"
-export FRANCE_TRAVAIL_CLIENT_SECRET="votre_client_secret"
-```
+Get your API credentials (`FRANCE_TRAVAIL_CLIENT_ID` and `FRANCE_TRAVAIL_CLIENT_SECRET`) from the [France Travail API developer portal](https://francetravail.io/data/api).
 
 ## Usage
 
-### Recherche d'offres d'emploi
-
 ```python
-from france_travail_api import FranceTravailClient
+from france_travail_api.client import FranceTravailClient
+from france_travail_api.auth.scope import Scope
 
-# Initialisation
-client = FranceTravailClient(
-    client_id="votre_id", 
-    client_secret="votre_secret"
-)
-
-# Recherche simple
-resultats = client.offres.search(motsCles="python", commune="75101")
-print(f"Total offres: {resultats.total}")
-
-for offre in resultats.offres:
-    print(f"{offre.intitule} - {offre.entreprise.nom}")
-
-# Pagination automatique (itérateur)
-for offre in client.offres.search_iter(motsCles="data scientist", departement="75"):
-    print(f"{offre.id}: {offre.intitule}")
+with FranceTravailClient(
+    client_id="your_id",
+    client_secret="your_secret",
+    scopes=[Scope.OFFRES]
+) as client:
+    pass  # Use client to access API endpoints
 ```
 
-### Async / Await
+# Contributing
 
-Le même client supporte les appels asynchrones :
+## Unix-like systems (GNU/Linux, macOS, etc.)
 
-```python
-import asyncio
-from france_travail_api import FranceTravailClient
+You need to have `curl` and [`uv`](https://docs.astral.sh/uv/getting-started/installation/) installed on your system.
 
-async def main():
-    async with FranceTravailClient() as client:
-        # Recherche async
-        result = await client.offres.search_async(motsCles="react")
-        print(f"Trouvé {result.total} offres")
-        
-        # Récupération d'une offre spécifique
-        if result.offres:
-            offre_id = result.offres[0].id
-            detail = await client.offres.get_async(offre_id)
-            print(detail.description)
+Then run the following command : `curl -sSL https://raw.githubusercontent.com/cmnemoi/france_travail_api/main/clone-and-install | bash`
 
-asyncio.run(main())
-```
+## Development
 
-### Référentiels
+You can run tests with `make test`.
 
-Accédez facilement aux tables de référence (codes ROME, communes, etc.) :
+To run integration tests, you need to set `FRANCE_TRAVAIL_CLIENT_ID` and `FRANCE_TRAVAIL_CLIENT_SECRET` environment variables.
 
-```python
-communes = client.offres.referentiel.communes()
-metiers = client.offres.referentiel.metiers()
-```
-
-### Mode Sandbox
-
-Pour tester sans consommer vos quotas de production :
-
-```python
-client = FranceTravailClient(sandbox=True)
-# Les appels seront redirigés vers l'API de test
-```
-
-## Gestion des Erreurs
-
-Les exceptions sont typées pour faciliter la gestion des erreurs :
-
-```python
-from france_travail_api import FranceTravailClient, RateLimitError, ResourceNotFoundError
-
-try:
-    client.offres.get("id_inexistant")
-except ResourceNotFoundError:
-    print("Offre introuvable")
-except RateLimitError as e:
-    print(f"Quota dépassé, réessayez dans {e.retry_after} secondes")
-```
-
-## License
+# License
 
 The source code of this repository is licensed under the [Apache License 2.0](LICENSE).

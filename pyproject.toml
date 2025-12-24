@@ -20,7 +20,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "httpx>=0.27",
+    "httpx>=0.28.1",
 ]
 
 [project.urls]
@@ -31,7 +31,7 @@ Repository = "https://github.com/cmnemoi/france_travail_api/"
 
 [dependency-groups]
 dev = [
-    "pytest-watcher>=0.5.0",
+    "pytest-watcher>=0.6.2",
     "python-semantic-release>=10.5.3",
 ]
 lint = [
@@ -42,9 +42,8 @@ lint = [
 test = [
     "pytest>=9.0.2",
     "pytest-cov>=7.0.0",
-    "pytest-asyncio>=0.23.0",
-    "load-dotenv>=0.1.0",
-    "respx>=0.21.0",
+    "pytest-asyncio>=1.3.0",
+    "python-dotenv>=1.2.1",
 ]
 
 [tool.semantic_release]

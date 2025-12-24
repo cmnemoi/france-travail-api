@@ -25,6 +25,9 @@ semantic-release:
 	git add pyproject.toml uv.lock
 	git commit --allow-empty --amend --no-edit 
 
+setup-env-variables:
+	cp .env.example .env
+
 setup-git-hooks:
 	chmod +x hooks/pre-commit
 	chmod +x hooks/pre-push

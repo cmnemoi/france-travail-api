@@ -1,0 +1,4 @@
+[pytest]
+markers = [
+    "integration: integration tests. Those are tests with volatile dependencies like HTTP clients.",
+]

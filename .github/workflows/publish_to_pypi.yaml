@@ -1,0 +1,35 @@
+name: Continous Delivery
+
+on:
+  push:
+    tags:
+      - '**'
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+
+jobs:
+  publish:
+      name: Publish package to PyPI
+      runs-on: ubuntu-latesst
+      
+      steps:
+      - uses: actions/checkout@v4
+        name: Checkout
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          cache-dependency-glob: "pyproject.toml"
+          enable-cache: true
+          version: "0.9.21"
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: ".python-version"
+      - name: Install dependencies with uv
+        run: uv sync --locked --no-dev
+      - name: Build package with uv
+        run: uv build
+      - name: Publish package with uv
+        run: uv publish
