@@ -28,7 +28,7 @@ jobs:
         with:
           python-version-file: ".python-version"
       - name: Install dependencies with uv
-        run: uv sync --locked --no-dev
+        run: uv sync --no-dev
       - name: Build package with uv
         run: uv build
       - name: Publish package with uv
