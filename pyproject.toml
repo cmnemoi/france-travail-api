@@ -1,6 +1,6 @@
 [project]
 name = "france-travail-api"
-version = "0.0.0"
+version = "0.0.1"
 description = "A Python SDK for France Travail API"
 readme = "README.md"
 requires-python = ">=3.10,<3.15"

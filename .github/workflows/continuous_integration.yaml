@@ -60,6 +60,9 @@ jobs:
       - name: Install dependencies
         run: uv sync --no-group dev --group test
       - name: Run tests with pytest
+        env:
+          FRANCE_TRAVAIL_CLIENT_ID: ${{ secrets.FRANCE_TRAVAIL_CLIENT_ID }}
+          FRANCE_TRAVAIL_CLIENT_SECRET: ${{ secrets.FRANCE_TRAVAIL_CLIENT_SECRET }}
         run: make test
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
