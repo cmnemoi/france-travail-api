@@ -1,8 +1,8 @@
 # France Travail API Python SDK
 
-[![Continuous Integration](https://github.com/cmnemoi/france_travail_api/actions/workflows/continuous_integration.yaml/badge.svg)](https://github.com/cmnemoi/france_travail_api/actions/workflows/continuous_integration.yaml)
-[![Continuous Delivery](https://github.com/cmnemoi/france_travail_api/actions/workflows/create_github_release.yaml/badge.svg)](https://github.com/cmnemoi/france_travail_api/actions/workflows/create_github_release.yaml)
-[![codecov](https://codecov.io/gh/cmnemoi/france_travail_api/graph/badge.svg?token=FLAARH38AG)](https://codecov.io/gh/cmnemoi/france_travail_api)
+[![Continuous Integration](https://github.com/cmnemoi/france-travail-api/actions/workflows/continuous_integration.yaml/badge.svg)](https://github.com/cmnemoi/france-travail-api/actions/workflows/continuous_integration.yaml)
+[![Continuous Delivery](https://github.com/cmnemoi/france-travail-api/actions/workflows/create_github_release.yaml/badge.svg)](https://github.com/cmnemoi/france-travail-api/actions/workflows/create_github_release.yaml)
+[![codecov](https://codecov.io/gh/cmnemoi/france-travail-api/graph/badge.svg?token=FLAARH38AG)](https://codecov.io/gh/cmnemoi/france-travail-api)
 
 A high-level Python SDK to interact with the [France Travail API](https://francetravail.io/data/api).
 
@@ -11,8 +11,8 @@ A high-level Python SDK to interact with the [France Travail API](https://france
 ## Installation
 
 ```bash
-python3 venv .france_travail_api
-source .france_travail_api/bin/activate
+python3 venv .france-travail-api
+source .france-travail-api/bin/activate
 pip install france-travail-api
 ```
 
@@ -42,7 +42,7 @@ with FranceTravailClient(
 
 You need to have `curl` and [`uv`](https://docs.astral.sh/uv/getting-started/installation/) installed on your system.
 
-Then run the following command : `curl -sSL https://raw.githubusercontent.com/cmnemoi/france_travail_api/main/clone-and-install | bash`
+Then run the following command : `curl -sSL https://raw.githubusercontent.com/cmnemoi/france-travail-api/main/clone-and-install | bash`
 
 ## Development
 
