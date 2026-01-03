@@ -1,6 +1,6 @@
 [project]
 name = "france-travail-api"
-version = "0.0.1"
+version = "0.0.0"
 description = "A Python SDK for France Travail API"
 readme = "README.md"
 requires-python = ">=3.10,<3.15"
@@ -48,6 +48,7 @@ test = [
 
 [tool.semantic_release]
 version_toml = ["pyproject.toml:project.version"]
+initial_version = "0.1.0"
 
 [build-system]
 requires = ["hatchling"]
