@@ -73,5 +73,16 @@ class FranceTravailCredentials:
             self._token = Token.from_response(response, now)
             return self._token
 
+    def to_authorization_header(self) -> dict[str, str]:
+        """
+        Convert the token to an Authorization header.
+
+        Returns
+        -------
+        dict[str, str]
+            Authorization header with the token value.
+        """
+        return self.get_token().to_authorization_header()
+
     def _has_valid_token(self, now: datetime.datetime) -> bool:
         return self._token is not None and not self._token.is_expired(now)

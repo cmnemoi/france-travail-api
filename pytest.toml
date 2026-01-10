@@ -1,4 +1,5 @@
 [pytest]
 markers = [
-    "integration: integration tests. Those are tests with volatile dependencies like HTTP clients.",
+    "e2e: end-to-end tests. Those are tests for public APIs.",
+    "integration: integration tests. Those are component-scopes tests with volatile dependencies like HTTP clients.",
 ]

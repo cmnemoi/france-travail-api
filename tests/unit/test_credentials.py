@@ -101,3 +101,26 @@ def test_should_raise_base_exception_when_http_client_returns_error() -> None:
         FranceTravailCredentials(
             client_id="client-id", client_secret="client-secret", scopes=[Scope.OFFRES], http_client=http_client
         ).get_token()
+
+
+def test_should_return_authorization_header() -> None:
+    http_client = FakeHttpClient()
+    http_client.add_response(
+        HTTPResponse(
+            status_code=http.HTTPStatus.OK,
+            body={
+                "scope": "api_offresdemploiv2 o2dsoffre",
+                "expires_in": 1_499,
+                "token_type": "Bearer",
+                "access_token": "my_token",
+            },
+            headers={},
+            request_id=uuid.uuid4(),
+        )
+    )
+
+    authorization_header = FranceTravailCredentials(
+        client_id="client-id", client_secret="client-secret", scopes=[Scope.OFFRES], http_client=http_client
+    ).to_authorization_header()
+
+    assert authorization_header == {"Authorization": "Bearer my_token"}

@@ -11,6 +11,9 @@ check-lint:
 check-types:
 	uv run mypy . --exclude=tests
 
+clean:
+	find . -name '*.pyc' -delete
+
 install:
 	uv lock --locked
 	uv sync --locked --group dev --group lint --group test
@@ -40,4 +43,4 @@ test:
 upgrade-dependencies:
 	uv lock --upgrade
 
-.PHONY: all check check-format check-lint check-types install lint semantic-release setup-git-hooks test upgrade-dependencies
+.PHONY: all check check-format check-lint check-types clean install lint semantic-release setup-git-hooks test upgrade-dependencies

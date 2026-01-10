@@ -50,6 +50,17 @@ class Token:
             token_type=body["token_type"],
         )
 
+    def to_authorization_header(self) -> dict[str, str]:
+        """
+        Convert the token to an Authorization header.
+
+        Returns
+        -------
+        dict[str, str]
+            Authorization header with the token value.
+        """
+        return {"Authorization": f"Bearer {self.access_token}"}
+
     def is_expired(self, now: datetime.datetime) -> bool:
         """
         Check if the token is expired.

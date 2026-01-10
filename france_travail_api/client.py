@@ -3,6 +3,7 @@ from typing import Sequence
 from france_travail_api.auth._credentials import FranceTravailCredentials
 from france_travail_api.auth.scope import Scope
 from france_travail_api.http_transport._http_client import HttpClient
+from france_travail_api.offres._client import FranceTravailOffresClient
 
 
 class FranceTravailClient:
@@ -38,7 +39,7 @@ class FranceTravailClient:
     >>> from france_travail_api.client import FranceTravailClient
     >>>
     >>> with FranceTravailClient(...) as client:
-    ...     pass  # API endpoints will be available as client.offres.search(...), etc.
+    ...     job_offers = client.offres.search(mots_cles="développeur Python")
 
     See Also
     --------
@@ -55,6 +56,8 @@ class FranceTravailClient:
     ) -> None:
         self._http_client = _http_client or HttpClient()
         self._credentials = FranceTravailCredentials(client_id, client_secret, scopes, self._http_client)
+
+        self.offres = FranceTravailOffresClient(self._credentials, self._http_client)
 
     def close(self) -> None:
         """
