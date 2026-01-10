@@ -33,7 +33,7 @@ with FranceTravailClient(
     client_secret="your_secret",
     scopes=[Scope.OFFRES]
 ) as client:
-    pass  # Use client to access API endpoints
+    job_offers =client.offres.search(mots_cles="developpeur")
 ```
 
 # Contributing
