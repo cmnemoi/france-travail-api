@@ -2,6 +2,22 @@
 
 <!-- version list -->
 
+## v1.2.0 (2026-01-13)
+
+### Documentation
+
+- Add documentation
+  ([`fab8af6`](https://github.com/cmnemoi/france-travail-api/commit/fab8af6094cf646decfeecf518f651236ba8a0a6))
+
+- Update README with usage example
+  ([`42811ad`](https://github.com/cmnemoi/france-travail-api/commit/42811adb677b4c11247f4de9b1576affabd3fca5))
+
+### Features
+
+- Add typing for some search parameters for job offers
+  ([`caeb4e5`](https://github.com/cmnemoi/france-travail-api/commit/caeb4e5ce37c3377d45307a1366f9231b85977d2))
+
+
 ## v1.1.0 (2026-01-10)
 
 ### Chores
