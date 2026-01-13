@@ -28,3 +28,12 @@ class ExperienceExigee(Enum):
                 return ExperienceExigee.EXPERIENCE_EXIGEE
             case _:
                 raise ValueError(f"Unknown experience exigee code: {code}")
+
+    def to_api_value(self) -> str:
+        """Convert ExperienceExigee to API value."""
+        mapping = {
+            ExperienceExigee.DEBUTANT_ACCEPTE: "D",
+            ExperienceExigee.EXPERIENCE_SOUHAITEE: "S",
+            ExperienceExigee.EXPERIENCE_EXIGEE: "E",
+        }
+        return mapping[self]

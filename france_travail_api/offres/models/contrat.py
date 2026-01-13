@@ -33,3 +33,6 @@ class CodeTypeContrat(Enum):
     DDI = "DDI"
     DIN = "DIN"
     DDT = "DDT"
+
+    def to_api_value(self) -> str:
+        return self.value

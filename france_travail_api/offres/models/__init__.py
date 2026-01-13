@@ -14,6 +14,15 @@ from .origine_offre import CodeOrigineOffre, OrigineOffre, PartenaireOffre
 from .permis import Permis
 from .qualite_pro import QualitePro
 from .salaire import ComplementSalaire, Salaire
+from .search_params import (
+    DureeHebdo,
+    Experience,
+    ModeSelectionPartenaires,
+    OrigineOffreFilter,
+    PeriodeSalaire,
+    Qualification,
+    Sort,
+)
 
 __all__ = [
     "Agence",
@@ -23,16 +32,23 @@ __all__ = [
     "ComplementSalaire",
     "Contact",
     "ContexteTravail",
+    "DureeHebdo",
     "Entreprise",
+    "Experience",
     "ExperienceExigee",
     "Exigence",
     "Formation",
     "Langue",
     "LieuTravail",
+    "ModeSelectionPartenaires",
     "Offre",
     "OrigineOffre",
+    "OrigineOffreFilter",
     "PartenaireOffre",
+    "PeriodeSalaire",
     "Permis",
+    "Qualification",
     "QualitePro",
     "Salaire",
+    "Sort",
 ]

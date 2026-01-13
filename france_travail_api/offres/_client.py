@@ -2,6 +2,17 @@ from france_travail_api._url import FranceTravailUrl
 from france_travail_api.auth._credentials import FranceTravailCredentials
 from france_travail_api.http_transport._http_client import HttpClient
 from france_travail_api.offres.models import Offre
+from france_travail_api.offres.models.contrat import CodeTypeContrat
+from france_travail_api.offres.models.experience import ExperienceExigee
+from france_travail_api.offres.models.search_params import (
+    DureeHebdo,
+    Experience,
+    ModeSelectionPartenaires,
+    OrigineOffreFilter,
+    PeriodeSalaire,
+    Qualification,
+    Sort,
+)
 
 JOB_OFFER_SEARCH_API_URL = "https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search"
 
@@ -14,18 +25,18 @@ class FranceTravailOffresClient:
     def search(
         self,
         mots_cles: str,
-        sort: str | None = None,
+        sort: Sort | None = None,
         domaine: str | None = None,
         code_rome: str | None = None,
         appellation: str | None = None,
         theme: str | None = None,
         secteur_activite: str | None = None,
         code_naf: str | None = None,
-        experience: str | None = None,
-        type_contrat: str | None = None,
+        experience: Experience | None = None,
+        type_contrat: CodeTypeContrat | None = None,
         nature_contrat: str | None = None,
-        origine_offre: int | None = None,
-        qualification: str | None = None,
+        origine_offre: OrigineOffreFilter | None = None,
+        qualification: Qualification | None = None,
         temps_plein: bool | None = None,
         commune: str | None = None,
         distance: int | None = None,
@@ -36,21 +47,21 @@ class FranceTravailOffresClient:
         niveau_formation: str | None = None,
         permis: str | None = None,
         salaire_min: str | None = None,
-        periode_salaire: str | None = None,
+        periode_salaire: PeriodeSalaire | None = None,
         acces_travailleur_handicape: bool | None = None,
         publiee_depuis: int | None = None,
         min_creation_date: str | None = None,
         max_creation_date: str | None = None,
         offres_mrs: bool | None = None,
-        experience_exigence: str | None = None,
+        experience_exigence: ExperienceExigee | None = None,
         grand_domaine: str | None = None,
         partenaires: str | None = None,
-        mode_selection_partenaires: str | None = None,
+        mode_selection_partenaires: ModeSelectionPartenaires | None = None,
         duree_hebdo_min: str | None = None,
         duree_hebdo_max: str | None = None,
         duree_contrat_min: str | None = None,
         duree_contrat_max: str | None = None,
-        duree_hebdo: str | None = None,
+        duree_hebdo: DureeHebdo | None = None,
         offres_manque_candidats: bool | None = None,
         entreprises_adaptees: bool | None = None,
         employeurs_handi_engages: bool | None = None,
@@ -62,8 +73,8 @@ class FranceTravailOffresClient:
         ----------
         mots_cles : str
             Keywords to search for
-        sort : str, optional
-            Sorting method: 0 (relevance), 1 (creation date), 2 (distance)
+        sort : Sort, optional
+            Sorting method (Sort.PERTINENCE, Sort.DATE_CREATION, Sort.DISTANCE)
         domaine : str, optional
             Job domain code
         code_rome : str, optional
@@ -76,16 +87,16 @@ class FranceTravailOffresClient:
             Activity sector (NAF division, up to 2 values)
         code_naf : str, optional
             NAF code (format 99.99X, up to 2 values)
-        experience : str, optional
-            Experience level: 0 (not specified), 1 (<1 year), 2 (1-3 years), 3 (>3 years)
-        type_contrat : str, optional
-            Contract type code
+        experience : Experience, optional
+            Experience level (Experience.NON_PRECISE, Experience.MOINS_UN_AN, etc.)
+        type_contrat : CodeTypeContrat, optional
+            Contract type (CodeTypeContrat.CDI, CodeTypeContrat.CDD, etc.)
         nature_contrat : str, optional
             Contract nature code
-        origine_offre : int, optional
-            Offer origin: 1 (France Travail), 2 (Partner)
-        qualification : str, optional
-            Qualification: 0 (non-executive), 9 (executive)
+        origine_offre : OrigineOffreFilter, optional
+            Offer origin filter (OrigineOffreFilter.FRANCE_TRAVAIL, OrigineOffreFilter.PARTENAIRE)
+        qualification : Qualification, optional
+            Qualification level (Qualification.NON_CADRE, Qualification.CADRE)
         temps_plein : bool, optional
             Full-time or part-time
         commune : str, optional
@@ -106,8 +117,8 @@ class FranceTravailOffresClient:
             Driving license code
         salaire_min : str, optional
             Minimum salary (requires periode_salaire)
-        periode_salaire : str, optional
-            Salary period: M (monthly), A (annual), H (hourly), C (per performance)
+        periode_salaire : PeriodeSalaire, optional
+            Salary period (PeriodeSalaire.MENSUEL, PeriodeSalaire.ANNUEL, etc.)
         acces_travailleur_handicape : bool, optional
             Accessible to workers with disabilities
         publiee_depuis : int, optional
@@ -118,14 +129,14 @@ class FranceTravailOffresClient:
             Maximum creation date (format: yyyy-MM-dd'T'HH:mm:ss'Z')
         offres_mrs : bool, optional
             Only offers with simulation-based recruitment method
-        experience_exigence : str, optional
-            Experience requirement: D (beginner accepted), S (desired), E (required)
+        experience_exigence : ExperienceExigee, optional
+            Experience requirement (ExperienceExigee.DEBUTANT_ACCEPTE, etc.)
         grand_domaine : str, optional
             Major domain code
         partenaires : str, optional
             Partner codes list
-        mode_selection_partenaires : str, optional
-            Partner selection mode: INCLUS or EXCLU
+        mode_selection_partenaires : ModeSelectionPartenaires, optional
+            Partner selection mode (ModeSelectionPartenaires.INCLUS, ModeSelectionPartenaires.EXCLU)
         duree_hebdo_min : str, optional
             Minimum weekly duration (format HHMM)
         duree_hebdo_max : str, optional
@@ -134,8 +145,8 @@ class FranceTravailOffresClient:
             Minimum contract duration in months (0-99)
         duree_contrat_max : str, optional
             Maximum contract duration in months (0-99)
-        duree_hebdo : str, optional
-            Contract duration type: 0 (not specified), 1 (full-time), 2 (part-time)
+        duree_hebdo : DureeHebdo, optional
+            Weekly duration type (DureeHebdo.NON_PRECISE, DureeHebdo.TEMPS_PLEIN, etc.)
         offres_manque_candidats : bool, optional
             Filter offers difficult to fill
         entreprises_adaptees : bool, optional
@@ -163,6 +174,7 @@ class FranceTravailOffresClient:
         """
         params = locals().copy()
         params.pop("self")
+        params = self._convert_enums_to_api_values(params)
 
         url = self._build_search_url(params)
         response_body = self._execute_search_request(url)
@@ -180,6 +192,15 @@ class FranceTravailOffresClient:
             headers=self._credentials.to_authorization_header(),
         )
         return response.body
+
+    def _convert_enums_to_api_values(self, params: dict) -> dict:
+        return {key: self._to_api_value(value) for key, value in params.items()}
+
+    def _to_api_value(self, value: object) -> str | int | bool | None:
+        try:
+            return value.to_api_value() if value is not None else None  # type: ignore[attr-defined]
+        except AttributeError:
+            return value  # type: ignore[return-value]
 
     def _get_special_param_mappings(self) -> dict[str, str]:
         return {
