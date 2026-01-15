@@ -3,6 +3,7 @@
 [![Continuous Integration](https://github.com/cmnemoi/france-travail-api/actions/workflows/continuous_integration.yaml/badge.svg)](https://github.com/cmnemoi/france-travail-api/actions/workflows/continuous_integration.yaml)
 [![Continuous Delivery](https://github.com/cmnemoi/france-travail-api/actions/workflows/create_github_release.yaml/badge.svg)](https://github.com/cmnemoi/france-travail-api/actions/workflows/create_github_release.yaml)
 [![codecov](https://codecov.io/gh/cmnemoi/france-travail-api/graph/badge.svg?token=FLAARH38AG)](https://codecov.io/gh/cmnemoi/france-travail-api)
+[![PyPI version](https://badge.fury.io/py/france-travail-api.svg)](https://badge.fury.io/py/france-travail-api)
 
 A high-level Python SDK to interact with the [France Travail API](https://francetravail.io/data/api).
 
