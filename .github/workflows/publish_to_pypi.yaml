@@ -1,9 +1,9 @@
 name: Continous Delivery
 
 on:
-  push:
-    tags:
-      - '**'
+  release:
+    types: 
+      - published
   workflow_dispatch:
 
 permissions:
@@ -12,7 +12,7 @@ permissions:
 jobs:
   publish:
       name: Publish package to PyPI
-      runs-on: ubuntu-latesst
+      runs-on: ubuntu-latest
       
       steps:
       - uses: actions/checkout@v4
