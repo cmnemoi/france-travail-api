@@ -16,7 +16,7 @@ clean:
 
 install:
 	uv lock --locked
-	uv sync --locked --group dev --group lint --group test
+	uv sync --locked --group dev --group lint --group test --group docs
 
 lint:
 	uv run ruff format .

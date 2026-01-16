@@ -24,6 +24,11 @@ class FranceTravailClient:
     _http_client : HttpClient
         Internal HTTP client for making requests. Not intended for direct use.
 
+    Attributes
+    ----------
+    offres : FranceTravailOffresClient
+        Client for accessing job offers.
+
     Notes
     -----
     The client handles OAuth2 authentication automatically. Access tokens are
@@ -36,7 +41,7 @@ class FranceTravailClient:
     --------
     Initialize and manage the client lifecycle:
 
-    >>> from france_travail_api.client import FranceTravailClient
+    >>> from france_travail_api import FranceTravailClient
     >>>
     >>> with FranceTravailClient(...) as client:
     ...     job_offers = client.offres.search(mots_cles="développeur Python")
@@ -44,10 +49,11 @@ class FranceTravailClient:
     See Also
     --------
     Scope : Available API scopes
+    FranceTravailOffresClient : Client for accessing job offers
 
     References
     ----------
-    .. [1] France Travail API Documentation
+    [1] France Travail API Documentation
            https://francetravail.io/data/api
     """
 
