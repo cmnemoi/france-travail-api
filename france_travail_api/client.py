@@ -71,8 +71,20 @@ class FranceTravailClient:
         """
         self._http_client.close()
 
+    async def close_async(self) -> None:
+        """
+        Close the client and its underlying HTTP client asynchronously.
+        """
+        await self._http_client.close_async()
+
     def __enter__(self) -> "FranceTravailClient":
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb) -> None:
         self.close()
+
+    async def __aenter__(self) -> "FranceTravailClient":
+        return self
+
+    async def __aexit__(self, exc_type, exc_val, exc_tb) -> None:
+        await self.close_async()

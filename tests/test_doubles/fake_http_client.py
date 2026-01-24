@@ -14,6 +14,16 @@ class FakeHttpClient:
         self.last_get_url = url
         return self.responses.pop(0)
 
+    async def get_async(self, url: str, headers: dict[str, str] | None = None) -> HTTPResponse:
+        self.last_get_url = url
+        return self.responses.pop(0)
+
     def post(self, url: str, payload: dict[str, str], headers: dict[str, str] | None = None) -> HTTPResponse:
+        self.last_post_url = url
+        return self.responses.pop(0)
+
+    async def post_async(
+        self, url: str, payload: dict[str, str], headers: dict[str, str] | None = None
+    ) -> HTTPResponse:
         self.last_post_url = url
         return self.responses.pop(0)

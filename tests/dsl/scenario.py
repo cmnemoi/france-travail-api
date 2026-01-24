@@ -130,6 +130,12 @@ class Scenario:
         self._offers = self._offres_client.search(**kwargs)
         return self
 
+    async def when_searching_offres_async(self, **kwargs: Any) -> "Scenario":
+        if self._offres_client is None:
+            raise ValueError("Offres client must be configured before search")
+        self._offers = await self._offres_client.search_async(**kwargs)
+        return self
+
     def when_searching_offres_e2e(self, **kwargs: Any) -> "Scenario":
         if self._client is None:
             raise ValueError("Client must be configured before search")
@@ -202,6 +208,13 @@ class Scenario:
             return
         if isinstance(self._http_client, HttpClient):
             self._http_client.close()
+
+    async def close_async(self) -> None:
+        if self._client is not None:
+            await self._client.close_async()
+            return
+        if isinstance(self._http_client, HttpClient):
+            await self._http_client.close_async()
 
     def __enter__(self) -> "Scenario":
         return self

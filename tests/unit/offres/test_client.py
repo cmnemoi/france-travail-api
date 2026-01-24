@@ -2,6 +2,8 @@ import datetime
 import http
 import uuid
 
+import pytest
+
 from france_travail_api.auth.scope import Scope
 from france_travail_api.http_transport._http_response import HTTPResponse
 from france_travail_api.offres.models import (
@@ -373,6 +375,41 @@ def test_should_search_job_offers_with_additional_filters() -> None:
     )
 
     flow.when_searching_offres(
+        mots_cles="développeur python",
+        sort=Sort.DATE_CREATION,
+        domaine="M18",
+        commune="75056",
+        departement="75",
+        type_contrat=CodeTypeContrat.CDI,
+    )
+
+    flow.then_last_get_url_contains("motsCles=développeur python")
+    flow.then_last_get_url_contains("sort=1")
+    flow.then_last_get_url_contains("domaine=M18")
+    flow.then_last_get_url_contains("commune=75056")
+    flow.then_last_get_url_contains("departement=75")
+    flow.then_last_get_url_contains("typeContrat=CDI")
+
+
+@pytest.mark.asyncio
+async def test_should_search_job_offers_with_additional_filters_async() -> None:
+    flow = (
+        scenario()
+        .unit()
+        .with_token_response()
+        .with_http_response(
+            HTTPResponse(
+                status_code=http.HTTPStatus.OK,
+                body={"resultats": []},
+                request_id=uuid.uuid4(),
+                headers={},
+            )
+        )
+        .with_credentials(client_id="client-id", client_secret="client-secret", scopes=[Scope.OFFRES])
+        .with_offres_client()
+    )
+
+    await flow.when_searching_offres_async(
         mots_cles="développeur python",
         sort=Sort.DATE_CREATION,
         domaine="M18",
