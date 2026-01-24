@@ -1,6 +1,7 @@
 import pytest
 
 from france_travail_api.offres.models.contexte_travail import ContexteTravail
+from tests.dsl import expect
 
 
 @pytest.mark.parametrize(
@@ -32,5 +33,4 @@ from france_travail_api.offres.models.contexte_travail import ContexteTravail
     ],
 )
 def test_from_dict_should_create_contexte_travail(data: dict, expected: ContexteTravail) -> None:
-    result = ContexteTravail.from_dict(data)
-    assert result == expected
+    expect(ContexteTravail.from_dict(data)).to_equal(expected)

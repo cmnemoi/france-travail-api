@@ -1,6 +1,7 @@
 import pytest
 
 from france_travail_api.offres.models.lieu_travail import LieuTravail
+from tests.dsl import expect
 
 
 @pytest.mark.parametrize(
@@ -48,5 +49,4 @@ from france_travail_api.offres.models.lieu_travail import LieuTravail
     ],
 )
 def test_from_dict_should_create_lieu_travail(data: dict, expected: LieuTravail) -> None:
-    result = LieuTravail.from_dict(data)
-    assert result == expected
+    expect(LieuTravail.from_dict(data)).to_equal(expected)

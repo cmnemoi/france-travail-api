@@ -1,6 +1,7 @@
 import pytest
 
 from france_travail_api.offres.models.salaire import Salaire
+from tests.dsl import expect
 
 
 @pytest.mark.parametrize(
@@ -44,5 +45,4 @@ from france_travail_api.offres.models.salaire import Salaire
     ],
 )
 def test_from_dict_should_create_salaire(data: dict, expected: Salaire) -> None:
-    result = Salaire.from_dict(data)
-    assert result == expected
+    expect(Salaire.from_dict(data)).to_equal(expected)

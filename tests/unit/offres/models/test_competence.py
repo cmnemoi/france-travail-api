@@ -2,6 +2,7 @@ import pytest
 
 from france_travail_api.offres.models.competence import Competence
 from france_travail_api.offres.models.exigence import Exigence
+from tests.dsl import expect
 
 
 @pytest.mark.parametrize(
@@ -58,5 +59,4 @@ from france_travail_api.offres.models.exigence import Exigence
     ],
 )
 def test_from_dict_should_create_competence(data: dict, expected: Competence) -> None:
-    result = Competence.from_dict(data)
-    assert result == expected
+    expect(Competence.from_dict(data)).to_equal(expected)

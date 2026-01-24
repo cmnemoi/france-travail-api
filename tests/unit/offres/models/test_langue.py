@@ -2,6 +2,7 @@ import pytest
 
 from france_travail_api.offres.models.exigence import Exigence
 from france_travail_api.offres.models.langue import Langue
+from tests.dsl import expect
 
 
 @pytest.mark.parametrize(
@@ -31,8 +32,7 @@ from france_travail_api.offres.models.langue import Langue
     ],
 )
 def test_from_dict_should_create_langue(data: dict, expected: Langue) -> None:
-    result = Langue.from_dict(data)
-    assert result == expected
+    expect(Langue.from_dict(data)).to_equal(expected)
 
 
 @pytest.mark.parametrize("invalid_code", ["INVALID", "X", "123"])
@@ -42,5 +42,4 @@ def test_from_dict_should_raise_error_when_exigence_code_is_invalid(invalid_code
         "exigence": invalid_code,
     }
 
-    with pytest.raises(ValueError, match=f"Unknown exigence code: {invalid_code}"):
-        Langue.from_dict(data)
+    expect(lambda: Langue.from_dict(data)).to_raise(ValueError, match=f"Unknown exigence code: {invalid_code}")

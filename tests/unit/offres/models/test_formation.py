@@ -2,6 +2,7 @@ import pytest
 
 from france_travail_api.offres.models.exigence import Exigence
 from france_travail_api.offres.models.formation import Formation
+from tests.dsl import expect
 
 
 @pytest.mark.parametrize(
@@ -65,8 +66,7 @@ from france_travail_api.offres.models.formation import Formation
     ],
 )
 def test_from_dict_should_create_formation(data: dict, expected: Formation) -> None:
-    result = Formation.from_dict(data)
-    assert result == expected
+    expect(Formation.from_dict(data)).to_equal(expected)
 
 
 @pytest.mark.parametrize("invalid_code", ["INVALID", "X", "123"])
@@ -77,5 +77,4 @@ def test_from_dict_should_raise_error_when_exigence_code_is_invalid(invalid_code
         "exigence": invalid_code,
     }
 
-    with pytest.raises(ValueError, match=f"Unknown exigence code: {invalid_code}"):
-        Formation.from_dict(data)
+    expect(lambda: Formation.from_dict(data)).to_raise(ValueError, match=f"Unknown exigence code: {invalid_code}")

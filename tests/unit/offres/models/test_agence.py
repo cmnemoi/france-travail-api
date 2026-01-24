@@ -1,6 +1,7 @@
 import pytest
 
 from france_travail_api.offres.models.agence import Agence
+from tests.dsl import expect
 
 
 @pytest.mark.parametrize(
@@ -25,5 +26,4 @@ from france_travail_api.offres.models.agence import Agence
     ],
 )
 def test_from_dict_should_create_agence(data: dict, expected: Agence) -> None:
-    result = Agence.from_dict(data)
-    assert result == expected
+    expect(Agence.from_dict(data)).to_equal(expected)

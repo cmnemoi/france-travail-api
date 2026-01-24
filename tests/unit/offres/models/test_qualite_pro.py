@@ -1,6 +1,7 @@
 import pytest
 
 from france_travail_api.offres.models.qualite_pro import QualitePro
+from tests.dsl import expect
 
 
 @pytest.mark.parametrize(
@@ -28,5 +29,4 @@ from france_travail_api.offres.models.qualite_pro import QualitePro
     ],
 )
 def test_from_dict_should_create_qualite_pro(data: dict, expected: QualitePro) -> None:
-    result = QualitePro.from_dict(data)
-    assert result == expected
+    expect(QualitePro.from_dict(data)).to_equal(expected)

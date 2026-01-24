@@ -1,6 +1,7 @@
 import pytest
 
 from france_travail_api.offres.models.contact import Contact
+from tests.dsl import expect
 
 
 @pytest.mark.parametrize(
@@ -64,5 +65,4 @@ from france_travail_api.offres.models.contact import Contact
     ],
 )
 def test_from_dict_should_create_contact(data: dict, expected: Contact) -> None:
-    result = Contact.from_dict(data)
-    assert result == expected
+    expect(Contact.from_dict(data)).to_equal(expected)

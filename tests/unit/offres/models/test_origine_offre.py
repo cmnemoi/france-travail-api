@@ -1,6 +1,7 @@
 import pytest
 
 from france_travail_api.offres.models.origine_offre import CodeOrigineOffre, OrigineOffre
+from tests.dsl import expect
 
 
 @pytest.mark.parametrize(
@@ -11,13 +12,11 @@ from france_travail_api.offres.models.origine_offre import CodeOrigineOffre, Ori
     ],
 )
 def test_code_origine_offre_from_code_should_return_correct_value(code: str, expected: CodeOrigineOffre) -> None:
-    result = CodeOrigineOffre.from_code(code)
-    assert result == expected
+    expect(CodeOrigineOffre.from_code(code)).to_equal(expected)
 
 
 def test_code_origine_offre_from_code_should_raise_key_error_when_code_is_invalid() -> None:
-    with pytest.raises(KeyError):
-        CodeOrigineOffre.from_code("INVALID")
+    expect(lambda: CodeOrigineOffre.from_code("INVALID")).to_raise(KeyError)
 
 
 @pytest.mark.parametrize(
@@ -53,5 +52,4 @@ def test_code_origine_offre_from_code_should_raise_key_error_when_code_is_invali
     ],
 )
 def test_from_dict_should_create_origine_offre(data: dict, expected: OrigineOffre) -> None:
-    result = OrigineOffre.from_dict(data)
-    assert result == expected
+    expect(OrigineOffre.from_dict(data)).to_equal(expected)
