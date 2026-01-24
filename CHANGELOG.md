@@ -2,6 +2,32 @@
 
 <!-- version list -->
 
+## v1.3.0 (2026-01-24)
+
+### Continuous Integration
+
+- Add mkdocs documentation
+  ([`995f989`](https://github.com/cmnemoi/france-travail-api/commit/995f989b331043cc7cda464f7261725d6271bbfe))
+
+- Update workflow triggers and correct typo in Ubuntu version
+  ([`acf6295`](https://github.com/cmnemoi/france-travail-api/commit/acf6295310b61bb70343650def6830061366a7ee))
+
+### Documentation
+
+- Add PyPi badge and update AGENTS.md
+  ([`ed59d86`](https://github.com/cmnemoi/france-travail-api/commit/ed59d867844e42eea400472aaca794676c40a3aa))
+
+### Features
+
+- Add `client.offres.search_async` method
+  ([`bf7ea41`](https://github.com/cmnemoi/france-travail-api/commit/bf7ea41c90c74b8fdae60df23ed0c26eb8666312))
+
+### Testing
+
+- Refactor test to DSL
+  ([`f5d79ec`](https://github.com/cmnemoi/france-travail-api/commit/f5d79ec746f6573867c52566bd42a75837c37acc))
+
+
 ## v1.2.0 (2026-01-13)
 
 ### Documentation
