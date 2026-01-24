@@ -1,0 +1,46 @@
+france_travail_api/client.py
+  2977b2f7e7574f8a 74-79,85-90
+tests/unit/offres/test_client.py
+  2977b2f7e7574f8a 5-6,392-426
+tests/dsl/scenario.py
+  2977b2f7e7574f8a 133-138,212-218
+tests/test_doubles/fake_http_client.py
+  2977b2f7e7574f8a 17-20,24-27
+tests/integration/offres/test_offres_client.py
+  2977b2f7e7574f8a 15-25
+france_travail_api/offres/_client.py
+  2977b2f7e7574f8a 183-341,355-361
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.0.37",
+  "base_commit_sha": "437b844306bd62141ad7dff779a9cfeb19a82e48",
+  "prompts": {
+    "2977b2f7e7574f8a": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_40e2a865affe96084RNgp7e3Ke",
+        "model": "google/antigravity-claude-sonnet-4-5"
+      },
+      "human_author": "Charles-Meldhine Madi Mnemoi <icdk5b4zf@relay.firefox.com>",
+      "messages": [],
+      "total_additions": 580,
+      "total_deletions": 0,
+      "accepted_lines": 249,
+      "overriden_lines": 0
+    },
+    "7433ec8e77d4a851": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_40e20f34effevC66tA7VM4fMB5",
+        "model": "github-copilot/gpt-5-mini"
+      },
+      "human_author": "Charles-Meldhine Madi Mnemoi <icdk5b4zf@relay.firefox.com>",
+      "messages": [],
+      "total_additions": 936,
+      "total_deletions": 641,
+      "accepted_lines": 15,
+      "overriden_lines": 3
+    }
+  }
+}
