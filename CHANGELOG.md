@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.5.0 (2026-01-25)
+
+### Features
+
+- Add `client.offres.referentiel.metiers()` and `client.offres.referentiel.metiers_async()` methods
+  ([`79f33a2`](https://github.com/cmnemoi/france-travail-api/commit/79f33a2aa28e74b3154866abfc760250f6ba8a68))
+
+
 ## v1.4.0 (2026-01-25)
 
 ### Features
