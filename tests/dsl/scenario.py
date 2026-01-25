@@ -31,6 +31,7 @@ class Scenario:
     _token: Token | None = None
     _authorization_header: dict[str, str] | None = None
     _offers: list[Offre] | None = None
+    _offre: Offre | None = None
 
     def unit(self) -> "Scenario":
         self._http_client = FakeHttpClient()
@@ -142,6 +143,41 @@ class Scenario:
         self._offers = self._client.offres.search(**kwargs)
         return self
 
+    def when_getting_offre(self, offer_id: str) -> "Scenario":
+        self._require_offres_client()
+        self._capture_offre_result(lambda: self._offres_client.get(offer_id))  # type: ignore[union-attr]
+        return self
+
+    async def when_getting_offre_async(self, offer_id: str) -> "Scenario":
+        self._require_offres_client()
+        await self._capture_offre_result_async(lambda: self._offres_client.get_async(offer_id))  # type: ignore[union-attr]
+        return self
+
+    def when_getting_offre_e2e(self, offer_id: str) -> "Scenario":
+        self._require_e2e_client()
+        self._capture_offre_result(lambda: self._client.offres.get(offer_id))  # type: ignore[union-attr]
+        return self
+
+    def _require_offres_client(self) -> None:
+        if self._offres_client is None:
+            raise ValueError("Offres client must be configured before get")
+
+    def _require_e2e_client(self) -> None:
+        if self._client is None:
+            raise ValueError("Client must be configured before get")
+
+    def _capture_offre_result(self, action) -> None:  # type: ignore[no-untyped-def]
+        try:
+            self._offre = action()
+        except Exception as exc:
+            self._captured_exception = exc
+
+    async def _capture_offre_result_async(self, action) -> None:  # type: ignore[no-untyped-def]
+        try:
+            self._offre = await action()
+        except Exception as exc:
+            self._captured_exception = exc
+
     def then_token_is(self, expected: Any) -> "Scenario":
         assert self._token == expected
         return self
@@ -200,6 +236,18 @@ class Scenario:
         if self._offers is None:
             raise AssertionError("Expected offers to be present")
         assert self._offers == expected
+        return self
+
+    def then_offre_should_be(self, expected: Offre) -> "Scenario":
+        if self._offre is None:
+            raise AssertionError("Expected offre to be present")
+        assert self._offre == expected
+        return self
+
+    def then_offre_should_be_instance_of(self, expected_type: type) -> "Scenario":
+        if self._offre is None:
+            raise AssertionError("Expected offre to be present")
+        assert isinstance(self._offre, expected_type)
         return self
 
     def close(self) -> None:

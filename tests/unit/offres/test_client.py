@@ -5,6 +5,7 @@ import uuid
 import pytest
 
 from france_travail_api.auth.scope import Scope
+from france_travail_api.exceptions import OffreNotFoundException
 from france_travail_api.http_transport._http_response import HTTPResponse
 from france_travail_api.offres.models import (
     CodeOrigineOffre,
@@ -424,3 +425,301 @@ async def test_should_search_job_offers_with_additional_filters_async() -> None:
     flow.then_last_get_url_contains("commune=75056")
     flow.then_last_get_url_contains("departement=75")
     flow.then_last_get_url_contains("typeContrat=CDI")
+
+
+def test_should_get_job_offer_by_id() -> None:
+    flow = (
+        scenario()
+        .unit()
+        .with_token_response()
+        .with_http_response(
+            HTTPResponse(
+                status_code=http.HTTPStatus.OK,
+                body={
+                    "id": "048KLTP",
+                    "intitule": "Développeur Python (H/F)",
+                    "description": "Nous recherchons un développeur Python expérimenté.",
+                    "dateCreation": "2025-01-15T10:00:00.000Z",
+                    "dateActualisation": "2025-01-20T14:30:00.000Z",
+                    "lieuTravail": {
+                        "libelle": "75 - Paris",
+                        "latitude": 48.8566,
+                        "longitude": 2.3522,
+                        "codePostal": "75001",
+                        "commune": "75056",
+                    },
+                    "romeCode": "M1805",
+                    "romeLibelle": "Études et développement informatique",
+                    "appellationlibelle": "Développeur / Développeuse Python",
+                    "entreprise": {"nom": "TechCorp", "entrepriseAdaptee": False},
+                    "typeContrat": "CDI",
+                    "typeContratLibelle": "CDI",
+                    "natureContrat": "Contrat travail",
+                    "experienceExige": "E",
+                    "experienceLibelle": "3 An(s)",
+                    "salaire": {"libelle": "Annuel de 45000.0 Euros à 55000.0 Euros sur 12.0 mois"},
+                    "dureeTravailLibelle": "35H/semaine",
+                    "dureeTravailLibelleConverti": "Temps plein",
+                    "alternance": False,
+                    "contact": {
+                        "coordonnees1": "https://example.com/apply",
+                        "urlPostulation": "https://example.com/apply",
+                    },
+                    "agence": {},
+                    "nombrePostes": 1,
+                    "accessibleTH": False,
+                    "qualificationCode": "9",
+                    "qualificationLibelle": "Cadre",
+                    "codeNAF": "62.01Z",
+                    "secteurActivite": "62",
+                    "secteurActiviteLibelle": "Programmation informatique",
+                    "origineOffre": {
+                        "origine": "1",
+                        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/048KLTP",
+                    },
+                    "offresManqueCandidats": False,
+                    "contexteTravail": {"horaires": ["35H/semaine"]},
+                    "entrepriseAdaptee": False,
+                    "employeurHandiEngage": False,
+                },
+                request_id=uuid.uuid4(),
+                headers={},
+            )
+        )
+        .with_credentials(client_id="client-id", client_secret="client-secret", scopes=[Scope.OFFRES])
+        .with_offres_client()
+    )
+
+    flow.when_getting_offre(offer_id="048KLTP").then_offre_should_be(
+        Offre(
+            id="048KLTP",
+            intitule="Développeur Python (H/F)",
+            description="Nous recherchons un développeur Python expérimenté.",
+            date_creation=datetime.datetime(2025, 1, 15, 10, 0, 0, 0, tzinfo=datetime.timezone.utc),
+            date_actualisation=datetime.datetime(2025, 1, 20, 14, 30, 0, 0, tzinfo=datetime.timezone.utc),
+            lieu_travail=LieuTravail(
+                libelle="75 - Paris",
+                latitude=48.8566,
+                longitude=2.3522,
+                code_postal="75001",
+                commune="75056",
+            ),
+            rome_code="M1805",
+            rome_libelle="Études et développement informatique",
+            appellation_libelle="Développeur / Développeuse Python",
+            entreprise=Entreprise(nom="TechCorp", entreprise_adaptee=False),
+            type_contrat=CodeTypeContrat.CDI,
+            type_contrat_libelle="CDI",
+            nature_contrat="Contrat travail",
+            experience_exige=ExperienceExigee.EXPERIENCE_EXIGEE,
+            experience_libelle="3 An(s)",
+            experience_commentaire=None,
+            formations=[],
+            langues=[],
+            permis=[],
+            outils_bureautiques=[],
+            competences=[],
+            salaire=Salaire(libelle="Annuel de 45000.0 Euros à 55000.0 Euros sur 12.0 mois"),
+            duree_travail_libelle="35H/semaine",
+            duree_travail_libelle_converti="Temps plein",
+            complement_exercice=None,
+            condition_exercice=None,
+            alternance=False,
+            contact=Contact(
+                coordonnees1="https://example.com/apply",
+                url_postulation="https://example.com/apply",
+            ),
+            agence=None,
+            nombre_postes=1,
+            accessible_th=False,
+            deplacement_code=None,
+            deplacement_libelle=None,
+            qualification_code="9",
+            qualification_libelle="Cadre",
+            code_naf="62.01Z",
+            secteur_activite="62",
+            secteur_activite_libelle="Programmation informatique",
+            qualites_professionnelles=[],
+            tranche_effectif_etab=None,
+            origine_offre=OrigineOffre(
+                origine=CodeOrigineOffre.FRANCE_TRAVAIL,
+                url_origine="https://candidat.francetravail.fr/offres/recherche/detail/048KLTP",
+            ),
+            offres_manque_candidats=False,
+            contexte_travail=ContexteTravail(horaires=["35H/semaine"]),
+            entreprise_adaptee=False,
+            employeur_handi_engage=False,
+        )
+    )
+
+
+def test_should_raise_exception_when_job_offer_not_found() -> None:
+    flow = (
+        scenario()
+        .unit()
+        .with_token_response()
+        .with_http_response(
+            HTTPResponse(
+                status_code=http.HTTPStatus.NO_CONTENT,
+                body={},
+                request_id=uuid.uuid4(),
+                headers={},
+            )
+        )
+        .with_credentials(client_id="client-id", client_secret="client-secret", scopes=[Scope.OFFRES])
+        .with_offres_client()
+    )
+
+    flow.when_getting_offre(offer_id="INVALID_ID").then_exception_is(
+        exception_type=OffreNotFoundException, match="Job offer with ID 'INVALID_ID' not found"
+    )
+
+
+@pytest.mark.asyncio
+async def test_should_get_job_offer_by_id_async() -> None:
+    flow = (
+        scenario()
+        .unit()
+        .with_token_response()
+        .with_http_response(
+            HTTPResponse(
+                status_code=http.HTTPStatus.OK,
+                body={
+                    "id": "048KLTP",
+                    "intitule": "Développeur Python (H/F)",
+                    "description": "Nous recherchons un développeur Python expérimenté.",
+                    "dateCreation": "2025-01-15T10:00:00.000Z",
+                    "dateActualisation": "2025-01-20T14:30:00.000Z",
+                    "lieuTravail": {
+                        "libelle": "75 - Paris",
+                        "latitude": 48.8566,
+                        "longitude": 2.3522,
+                        "codePostal": "75001",
+                        "commune": "75056",
+                    },
+                    "romeCode": "M1805",
+                    "romeLibelle": "Études et développement informatique",
+                    "appellationlibelle": "Développeur / Développeuse Python",
+                    "entreprise": {"nom": "TechCorp", "entrepriseAdaptee": False},
+                    "typeContrat": "CDI",
+                    "typeContratLibelle": "CDI",
+                    "natureContrat": "Contrat travail",
+                    "experienceExige": "E",
+                    "experienceLibelle": "3 An(s)",
+                    "salaire": {"libelle": "Annuel de 45000.0 Euros à 55000.0 Euros sur 12.0 mois"},
+                    "dureeTravailLibelle": "35H/semaine",
+                    "dureeTravailLibelleConverti": "Temps plein",
+                    "alternance": False,
+                    "contact": {
+                        "coordonnees1": "https://example.com/apply",
+                        "urlPostulation": "https://example.com/apply",
+                    },
+                    "agence": {},
+                    "nombrePostes": 1,
+                    "accessibleTH": False,
+                    "qualificationCode": "9",
+                    "qualificationLibelle": "Cadre",
+                    "codeNAF": "62.01Z",
+                    "secteurActivite": "62",
+                    "secteurActiviteLibelle": "Programmation informatique",
+                    "origineOffre": {
+                        "origine": "1",
+                        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/048KLTP",
+                    },
+                    "offresManqueCandidats": False,
+                    "contexteTravail": {"horaires": ["35H/semaine"]},
+                    "entrepriseAdaptee": False,
+                    "employeurHandiEngage": False,
+                },
+                request_id=uuid.uuid4(),
+                headers={},
+            )
+        )
+        .with_credentials(client_id="client-id", client_secret="client-secret", scopes=[Scope.OFFRES])
+        .with_offres_client()
+    )
+
+    await flow.when_getting_offre_async(offer_id="048KLTP")
+    flow.then_offre_should_be(
+        Offre(
+            id="048KLTP",
+            intitule="Développeur Python (H/F)",
+            description="Nous recherchons un développeur Python expérimenté.",
+            date_creation=datetime.datetime(2025, 1, 15, 10, 0, 0, 0, tzinfo=datetime.timezone.utc),
+            date_actualisation=datetime.datetime(2025, 1, 20, 14, 30, 0, 0, tzinfo=datetime.timezone.utc),
+            lieu_travail=LieuTravail(
+                libelle="75 - Paris",
+                latitude=48.8566,
+                longitude=2.3522,
+                code_postal="75001",
+                commune="75056",
+            ),
+            rome_code="M1805",
+            rome_libelle="Études et développement informatique",
+            appellation_libelle="Développeur / Développeuse Python",
+            entreprise=Entreprise(nom="TechCorp", entreprise_adaptee=False),
+            type_contrat=CodeTypeContrat.CDI,
+            type_contrat_libelle="CDI",
+            nature_contrat="Contrat travail",
+            experience_exige=ExperienceExigee.EXPERIENCE_EXIGEE,
+            experience_libelle="3 An(s)",
+            experience_commentaire=None,
+            formations=[],
+            langues=[],
+            permis=[],
+            outils_bureautiques=[],
+            competences=[],
+            salaire=Salaire(libelle="Annuel de 45000.0 Euros à 55000.0 Euros sur 12.0 mois"),
+            duree_travail_libelle="35H/semaine",
+            duree_travail_libelle_converti="Temps plein",
+            complement_exercice=None,
+            condition_exercice=None,
+            alternance=False,
+            contact=Contact(
+                coordonnees1="https://example.com/apply",
+                url_postulation="https://example.com/apply",
+            ),
+            agence=None,
+            nombre_postes=1,
+            accessible_th=False,
+            deplacement_code=None,
+            deplacement_libelle=None,
+            qualification_code="9",
+            qualification_libelle="Cadre",
+            code_naf="62.01Z",
+            secteur_activite="62",
+            secteur_activite_libelle="Programmation informatique",
+            qualites_professionnelles=[],
+            tranche_effectif_etab=None,
+            origine_offre=OrigineOffre(
+                origine=CodeOrigineOffre.FRANCE_TRAVAIL,
+                url_origine="https://candidat.francetravail.fr/offres/recherche/detail/048KLTP",
+            ),
+            offres_manque_candidats=False,
+            contexte_travail=ContexteTravail(horaires=["35H/semaine"]),
+            entreprise_adaptee=False,
+            employeur_handi_engage=False,
+        )
+    )
+
+
+@pytest.mark.asyncio
+async def test_should_raise_exception_when_job_offer_not_found_async() -> None:
+    flow = (
+        scenario()
+        .unit()
+        .with_token_response()
+        .with_http_response(
+            HTTPResponse(
+                status_code=http.HTTPStatus.NO_CONTENT,
+                body={},
+                request_id=uuid.uuid4(),
+                headers={},
+            )
+        )
+        .with_credentials(client_id="client-id", client_secret="client-secret", scopes=[Scope.OFFRES])
+        .with_offres_client()
+    )
+
+    await flow.when_getting_offre_async(offer_id="INVALID_ID")
+    flow.then_exception_is(exception_type=OffreNotFoundException, match="Job offer with ID 'INVALID_ID' not found")

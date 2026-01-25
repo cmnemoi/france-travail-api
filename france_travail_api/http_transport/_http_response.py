@@ -40,10 +40,16 @@ class HTTPResponse:
         Returns
         -------
         HTTPResponse
+
+        Notes
+        -----
+        When the API returns HTTP 204 No Content (e.g., when a job offer is not found),
+        the response has no body. In such cases, an empty dictionary is returned to maintain
+        type consistency and prevent JSON parsing errors.
         """
         return HTTPResponse(
             request_id=uuid.UUID(response.request.headers["X-Request-Id"]),
             status_code=http.HTTPStatus(response.status_code),
-            body=response.json(),
+            body=response.json() if response.text else {},  # Empty dict for HTTP 204 No Content
             headers=dict(response.headers),
         )

@@ -72,3 +72,29 @@ class ClientAuthenticationException(FranceTravailException):
 
 class BadCredentialsException(ClientAuthenticationException):
     pass
+
+
+class OffreNotFoundException(FranceTravailException):
+    """
+    Exception raised when a job offer is not found.
+
+    This exception is raised when attempting to retrieve a specific job offer
+    by ID that does not exist in the France Travail database.
+
+    Parameters
+    ----------
+    message : str
+        Error message describing which job offer was not found.
+    request_id : uuid.UUID | None
+        Request ID for the failed request.
+
+    See Also
+    --------
+    FranceTravailException : Base exception class
+
+    Examples
+    --------
+    >>> raise OffreNotFoundException("Job offer with ID '123ABC' not found")
+    """
+
+    pass

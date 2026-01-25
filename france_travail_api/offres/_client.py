@@ -1,6 +1,10 @@
+import http
+
 from france_travail_api._url import FranceTravailUrl
 from france_travail_api.auth._credentials import FranceTravailCredentials
+from france_travail_api.exceptions import OffreNotFoundException
 from france_travail_api.http_transport._http_client import HttpClient
+from france_travail_api.http_transport._http_response import HTTPResponse
 from france_travail_api.offres.models import Offre
 from france_travail_api.offres.models.contrat import CodeTypeContrat
 from france_travail_api.offres.models.experience import ExperienceExigee
@@ -15,6 +19,7 @@ from france_travail_api.offres.models.search_params import (
 )
 
 JOB_OFFER_SEARCH_API_URL = "https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search"
+JOB_OFFER_GET_API_URL = "https://api.francetravail.io/partenaire/offresdemploi/v2/offres"
 
 
 class FranceTravailOffresClient:
@@ -338,6 +343,96 @@ class FranceTravailOffresClient:
         url = self._build_search_url(params)
         response_body = await self._execute_search_request_async(url)
         return [Offre.from_dict(offre_json) for offre_json in response_body.get("resultats", [])]
+
+    def get(self, offer_id: str) -> Offre:
+        """Get a job offer by its ID.
+
+        Parameters
+        ----------
+        offer_id : str
+            Job offer ID (e.g., "048KLTP").
+
+        Returns
+        -------
+        Offre
+            The job offer with the specified ID.
+
+        Raises
+        ------
+        OffreNotFoundException
+            If no job offer with the specified ID exists.
+
+        Examples
+        --------
+        >>> client = FranceTravailOffresClient(credentials, http_client)
+        >>> client.get(offer_id="048KLTP")
+        Offre(id="048KLTP", intitule="Développeur Python (H/F)", ...)
+
+        References
+        ----------
+        .. [1] France Travail API Documentation - Offres d'emploi - Consulter un détail d'offre
+           https://francetravail.io/produits-partages/catalogue/offres-emploi/documentation#/api-reference/operations/recupererOffre
+        """
+        url = self._build_get_url(offer_id)
+        response = self._execute_get_request(url)
+        return self._parse_get_response(response, offer_id)
+
+    async def get_async(self, offer_id: str) -> Offre:
+        """Get a job offer by its ID asynchronously.
+
+        Parameters
+        ----------
+        offer_id : str
+            Job offer ID (e.g., "048KLTP").
+
+        Returns
+        -------
+        Offre
+            The job offer with the specified ID.
+
+        Raises
+        ------
+        OffreNotFoundException
+            If no job offer with the specified ID exists.
+
+        Examples
+        --------
+        >>> import asyncio
+        >>> client = FranceTravailOffresClient(credentials, http_client)
+        >>> asyncio.run(client.get_async(offer_id="048KLTP"))
+        Offre(id="048KLTP", intitule="Développeur Python (H/F)", ...)
+
+        References
+        ----------
+        .. [1] France Travail API Documentation - Offres d'emploi - Consulter un détail d'offre
+           https://francetravail.io/produits-partages/catalogue/offres-emploi/documentation#/api-reference/operations/recupererOffre
+        """
+        url = self._build_get_url(offer_id)
+        response = await self._execute_get_request_async(url)
+        return self._parse_get_response(response, offer_id)
+
+    def _build_get_url(self, offer_id: str) -> str:
+        return f"{JOB_OFFER_GET_API_URL}/{offer_id}"
+
+    def _execute_get_request(self, url: str) -> HTTPResponse:
+        return self._http_client.get(
+            url=url,
+            headers=self._credentials.to_authorization_header(),
+        )
+
+    async def _execute_get_request_async(self, url: str) -> HTTPResponse:
+        return await self._http_client.get_async(
+            url=url,
+            headers=self._credentials.to_authorization_header(),
+        )
+
+    def _parse_get_response(self, response: HTTPResponse, offer_id: str) -> Offre:
+        if response.status_code == http.HTTPStatus.NO_CONTENT:
+            raise OffreNotFoundException(
+                f"Job offer with ID '{offer_id}' not found",
+                request_id=response.request_id,
+            )
+        return Offre.from_dict(response.body)
 
     def _build_search_url(self, params: dict[str, str | int | bool]) -> str:
         return FranceTravailUrl(
