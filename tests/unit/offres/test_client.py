@@ -19,6 +19,7 @@ from france_travail_api.offres.models import (
     Formation,
     Langue,
     LieuTravail,
+    Metier,
     Offre,
     OrigineOffre,
     Permis,
@@ -723,3 +724,51 @@ async def test_should_raise_exception_when_job_offer_not_found_async() -> None:
 
     await flow.when_getting_offre_async(offer_id="INVALID_ID")
     flow.then_exception_is(exception_type=OffreNotFoundException, match="Job offer with ID 'INVALID_ID' not found")
+
+
+@pytest.fixture
+def metiers_response() -> HTTPResponse:
+    return HTTPResponse(
+        status_code=http.HTTPStatus.OK,
+        body=[
+            {"code": "D1102", "libelle": "Boulangerie - viennoiserie"},
+            {"code": "M1805", "libelle": "Études et développement informatique"},
+        ],
+        request_id=uuid.uuid4(),
+        headers={},
+    )
+
+
+def test_should_get_metiers_from_referentiel(metiers_response: HTTPResponse) -> None:
+    flow = (
+        scenario()
+        .unit()
+        .with_token_response()
+        .with_http_response(metiers_response)
+        .with_credentials(client_id="client-id", client_secret="client-secret", scopes=[Scope.OFFRES])
+        .with_offres_client()
+    )
+
+    metiers = flow._offres_client.referentiels.metiers()
+
+    assert len(metiers) == 2
+    assert metiers[0] == Metier(code="D1102", libelle="Boulangerie - viennoiserie")
+    assert metiers[1] == Metier(code="M1805", libelle="Études et développement informatique")
+
+
+@pytest.mark.asyncio
+async def test_should_get_metiers_from_referentiel_async(metiers_response: HTTPResponse) -> None:
+    flow = (
+        scenario()
+        .unit()
+        .with_token_response()
+        .with_http_response(metiers_response)
+        .with_credentials(client_id="client-id", client_secret="client-secret", scopes=[Scope.OFFRES])
+        .with_offres_client()
+    )
+
+    metiers = await flow._offres_client.referentiels.metiers_async()
+    assert metiers == [
+        Metier(code="D1102", libelle="Boulangerie - viennoiserie"),
+        Metier(code="M1805", libelle="Études et développement informatique"),
+    ]

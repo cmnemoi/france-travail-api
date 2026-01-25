@@ -14,6 +14,7 @@ from france_travail_api.client import FranceTravailClient
 from france_travail_api.http_transport._http_client import HttpClient
 from france_travail_api.http_transport._http_response import HTTPResponse
 from france_travail_api.offres._client import FranceTravailOffresClient
+from france_travail_api.offres.models.metier import Metier
 from france_travail_api.offres.models.offre import Offre
 from tests.test_doubles.fake_http_client import FakeHttpClient
 
@@ -32,6 +33,7 @@ class Scenario:
     _authorization_header: dict[str, str] | None = None
     _offers: list[Offre] | None = None
     _offre: Offre | None = None
+    _metiers: list[Metier] | None = None
 
     def unit(self) -> "Scenario":
         self._http_client = FakeHttpClient()
@@ -158,6 +160,11 @@ class Scenario:
         self._capture_offre_result(lambda: self._client.offres.get(offer_id))  # type: ignore[union-attr]
         return self
 
+    def when_getting_metiers_e2e(self) -> "Scenario":
+        self._require_e2e_client()
+        self._metiers = self._client.offres.referentiels.metiers()  # type: ignore[union-attr]
+        return self
+
     def _require_offres_client(self) -> None:
         if self._offres_client is None:
             raise ValueError("Offres client must be configured before get")
@@ -248,6 +255,12 @@ class Scenario:
         if self._offre is None:
             raise AssertionError("Expected offre to be present")
         assert isinstance(self._offre, expected_type)
+        return self
+
+    def then_all_metiers_are(self, expected_type: type) -> "Scenario":
+        if self._metiers is None:
+            raise AssertionError("Expected metiers to be present")
+        assert all(isinstance(metier, expected_type) for metier in self._metiers)
         return self
 
     def close(self) -> None:

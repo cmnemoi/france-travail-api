@@ -9,6 +9,7 @@ from .experience import ExperienceExigee
 from .formation import Formation
 from .langue import Langue
 from .lieu_travail import LieuTravail
+from .metier import Metier
 from .offre import Offre
 from .origine_offre import CodeOrigineOffre, OrigineOffre, PartenaireOffre
 from .permis import Permis
@@ -40,6 +41,7 @@ __all__ = [
     "Formation",
     "Langue",
     "LieuTravail",
+    "Metier",
     "ModeSelectionPartenaires",
     "Offre",
     "OrigineOffre",

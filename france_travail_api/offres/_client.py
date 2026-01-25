@@ -5,6 +5,7 @@ from france_travail_api.auth._credentials import FranceTravailCredentials
 from france_travail_api.exceptions import OffreNotFoundException
 from france_travail_api.http_transport._http_client import HttpClient
 from france_travail_api.http_transport._http_response import HTTPResponse
+from france_travail_api.offres._referentiels_client import ReferentielsClient
 from france_travail_api.offres.models import Offre
 from france_travail_api.offres.models.contrat import CodeTypeContrat
 from france_travail_api.offres.models.experience import ExperienceExigee
@@ -26,6 +27,7 @@ class FranceTravailOffresClient:
     def __init__(self, credentials: FranceTravailCredentials, http_client: HttpClient) -> None:
         self._credentials = credentials
         self._http_client = http_client
+        self.referentiels = ReferentielsClient(credentials, http_client)
 
     def search(
         self,

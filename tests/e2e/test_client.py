@@ -1,5 +1,6 @@
 import pytest
 
+from france_travail_api.offres.models.metier import Metier
 from france_travail_api.offres.models.offre import Offre
 from tests.dsl import scenario
 from tests.dsl.scenario import Scenario
@@ -33,3 +34,12 @@ def _get_first_valid_offer_id(flow: Scenario) -> str:
     assert first_offer.id is not None, "First offer has no ID"
 
     return first_offer.id
+
+
+@pytest.mark.e2e
+def test_should_get_metiers_from_referentiel() -> None:
+    flow = scenario().e2e()
+
+    flow.when_getting_metiers_e2e().then_all_metiers_are(Metier)
+
+    flow.close()
