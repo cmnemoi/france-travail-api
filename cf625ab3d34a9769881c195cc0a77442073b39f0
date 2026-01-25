@@ -1,0 +1,35 @@
+tests/dsl/scenario.py
+  414ade030cee59ec 17,36,163-167,260-265
+france_travail_api/offres/_client.py
+  414ade030cee59ec 8,30
+france_travail_api/offres/models/__init__.py
+  414ade030cee59ec 12,44
+france_travail_api/offres/_referentiels_client.py
+  414ade030cee59ec 1-75
+tests/e2e/test_client.py
+  414ade030cee59ec 3,37-45
+tests/unit/offres/test_client.py
+  414ade030cee59ec 22,727-774
+france_travail_api/offres/models/metier.py
+  414ade030cee59ec 1-39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.0.37",
+  "base_commit_sha": "cf625ab3d34a9769881c195cc0a77442073b39f0",
+  "prompts": {
+    "414ade030cee59ec": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_40bfa2cd1ffef7fKeRIoHRH3fY",
+        "model": "github-copilot/claude-sonnet-4.5"
+      },
+      "human_author": "Charles-Meldhine Madi Mnemoi <icdk5b4zf@relay.firefox.com>",
+      "messages": [],
+      "total_additions": 235,
+      "total_deletions": 45,
+      "accepted_lines": 190,
+      "overriden_lines": 0
+    }
+  }
+}
