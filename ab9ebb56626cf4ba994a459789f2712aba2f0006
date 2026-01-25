@@ -1,0 +1,31 @@
+france_travail_api/offres/models/appellation.py
+  7c8589cb4259f94f 1-39
+france_travail_api/offres/_referentiels_client.py
+  7c8589cb4259f94f 6,10,63-107,123-126
+france_travail_api/offres/models/__init__.py
+  7c8589cb4259f94f 2,31
+tests/unit/offres/test_referentiels_client.py
+  7c8589cb4259f94f 1-105
+tests/unit/offres/models/test_appellation.py
+  7c8589cb4259f94f 1-21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.0.37",
+  "base_commit_sha": "ab9ebb56626cf4ba994a459789f2712aba2f0006",
+  "prompts": {
+    "7c8589cb4259f94f": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_40b0a2a53ffe2YkqsRYFQSTwDl",
+        "model": "google/antigravity-gemini-3-pro"
+      },
+      "human_author": "Charles-Meldhine Madi Mnemoi <icdk5b4zf@relay.firefox.com>",
+      "messages": [],
+      "total_additions": 238,
+      "total_deletions": 69,
+      "accepted_lines": 218,
+      "overriden_lines": 0
+    }
+  }
+}
