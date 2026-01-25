@@ -1,4 +1,5 @@
 from .agence import Agence
+from .appellation import Appellation
 from .competence import Competence
 from .contact import Contact
 from .contexte_travail import ContexteTravail
@@ -27,6 +28,7 @@ from .search_params import (
 
 __all__ = [
     "Agence",
+    "Appellation",
     "CodeOrigineOffre",
     "CodeTypeContrat",
     "Competence",
