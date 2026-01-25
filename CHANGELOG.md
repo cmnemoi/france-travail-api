@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.4.0 (2026-01-25)
+
+### Features
+
+- Add `client.offres.get` and `client.offres.get_async` methods
+  ([`3ea67d4`](https://github.com/cmnemoi/france-travail-api/commit/3ea67d44590f67620aad31cedb266642e8c26d40))
+
+
 ## v1.3.0 (2026-01-24)
 
 ### Continuous Integration
