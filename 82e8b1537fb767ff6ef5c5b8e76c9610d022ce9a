@@ -1,0 +1,63 @@
+tests/unit/offres/test_client.py
+  c16b4020c1f0c994 772-775
+  414ade030cee59ec 22,727-771
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.0.37",
+  "base_commit_sha": "82e8b1537fb767ff6ef5c5b8e76c9610d022ce9a",
+  "prompts": {
+    "2977b2f7e7574f8a": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_40e2a865affe96084RNgp7e3Ke",
+        "model": "google/antigravity-claude-sonnet-4-5"
+      },
+      "human_author": "Charles-Meldhine Madi Mnemoi <icdk5b4zf@relay.firefox.com>",
+      "messages": [],
+      "total_additions": 580,
+      "total_deletions": 0,
+      "accepted_lines": 37,
+      "overriden_lines": 0
+    },
+    "414ade030cee59ec": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_40bfa2cd1ffef7fKeRIoHRH3fY",
+        "model": "github-copilot/claude-sonnet-4.5"
+      },
+      "human_author": "Charles-Meldhine Madi Mnemoi <icdk5b4zf@relay.firefox.com>",
+      "messages": [],
+      "total_additions": 235,
+      "total_deletions": 45,
+      "accepted_lines": 46,
+      "overriden_lines": 0
+    },
+    "c16b4020c1f0c994": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "0760dbcf-2cdf-47a3-8f53-b57a5721a1dd",
+        "model": "unknown"
+      },
+      "human_author": null,
+      "messages": [],
+      "total_additions": 4,
+      "total_deletions": 2,
+      "accepted_lines": 4,
+      "overriden_lines": 0
+    },
+    "e64076585760453e": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_40cf2507cffeVEIaDg3ozhYAi7",
+        "model": "google/antigravity-claude-sonnet-4-5"
+      },
+      "human_author": "Charles-Meldhine Madi Mnemoi <icdk5b4zf@relay.firefox.com>",
+      "messages": [],
+      "total_additions": 256,
+      "total_deletions": 67,
+      "accepted_lines": 2,
+      "overriden_lines": 0
+    }
+  }
+}
