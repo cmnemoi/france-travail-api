@@ -1,0 +1,2411 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../france_travail_api/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>offres - france-travail-api</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#offres-client" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="france-travail-api" class="md-header__button md-logo" aria-label="france-travail-api" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            france-travail-api
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              offres
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="france-travail-api" class="md-nav__button md-logo" aria-label="france-travail-api" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    france-travail-api
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../france_travail_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    france_travail_api
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    offres
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    offres
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#france_travail_api.offres._client" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        _client
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#france_travail_api.offres._client.FranceTravailOffresClient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FranceTravailOffresClient
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FranceTravailOffresClient">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#france_travail_api.offres._client.FranceTravailOffresClient.get" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#france_travail_api.offres._client.FranceTravailOffresClient.get_async" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_async
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#france_travail_api.offres._client.FranceTravailOffresClient.search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        search
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#france_travail_api.offres._client.FranceTravailOffresClient.search_async" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        search_async
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#france_travail_api.offres._client" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        _client
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#france_travail_api.offres._client.FranceTravailOffresClient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FranceTravailOffresClient
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FranceTravailOffresClient">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#france_travail_api.offres._client.FranceTravailOffresClient.get" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#france_travail_api.offres._client.FranceTravailOffresClient.get_async" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get_async
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#france_travail_api.offres._client.FranceTravailOffresClient.search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        search
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#france_travail_api.offres._client.FranceTravailOffresClient.search_async" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        search_async
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="offres-client">Offres client</h1>
+<p>Sub-client for accessing job offers.</p>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="france_travail_api.offres._client"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="france_travail_api.offres._client.FranceTravailOffresClient" class="doc doc-heading">
+            <code>FranceTravailOffresClient</code>
+
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="france_travail_api.offres._client.FranceTravailOffresClient.get" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get</span><span class="p">(</span><span class="n">offer_id</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Get a job offer by its ID.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>offer_id</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Job offer ID (e.g., "048KLTP").</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="france_travail_api.offres.models.Offre">Offre</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The job offer with the specified ID.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="france_travail_api.exceptions.OffreNotFoundException">OffreNotFoundException</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If no job offer with the specified ID exists.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">client</span> <span class="o">=</span> <span class="n">FranceTravailOffresClient</span><span class="p">(</span><span class="n">credentials</span><span class="p">,</span> <span class="n">http_client</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">offer_id</span><span class="o">=</span><span class="s2">&quot;048KLTP&quot;</span><span class="p">)</span>
+<span class="go">Offre(id=&quot;048KLTP&quot;, intitule=&quot;Développeur Python (H/F)&quot;, ...)</span>
+</code></pre></div>
+
+
+<details class="references" open>
+  <summary>References</summary>
+  <p>.. [1] France Travail API Documentation - Offres d'emploi - Consulter un détail d'offre
+   https://francetravail.io/produits-partages/catalogue/offres-emploi/documentation#/api-reference/operations/recupererOffre</p>
+</details>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="france_travail_api.offres._client.FranceTravailOffresClient.get_async" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_async</span><span class="p">(</span><span class="n">offer_id</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Get a job offer by its ID asynchronously.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>offer_id</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Job offer ID (e.g., "048KLTP").</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="france_travail_api.offres.models.Offre">Offre</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The job offer with the specified ID.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="france_travail_api.exceptions.OffreNotFoundException">OffreNotFoundException</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If no job offer with the specified ID exists.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client</span> <span class="o">=</span> <span class="n">FranceTravailOffresClient</span><span class="p">(</span><span class="n">credentials</span><span class="p">,</span> <span class="n">http_client</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">get_async</span><span class="p">(</span><span class="n">offer_id</span><span class="o">=</span><span class="s2">&quot;048KLTP&quot;</span><span class="p">))</span>
+<span class="go">Offre(id=&quot;048KLTP&quot;, intitule=&quot;Développeur Python (H/F)&quot;, ...)</span>
+</code></pre></div>
+
+
+<details class="references" open>
+  <summary>References</summary>
+  <p>.. [1] France Travail API Documentation - Offres d'emploi - Consulter un détail d'offre
+   https://francetravail.io/produits-partages/catalogue/offres-emploi/documentation#/api-reference/operations/recupererOffre</p>
+</details>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="france_travail_api.offres._client.FranceTravailOffresClient.search" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">search</span><span class="p">(</span><span class="n">mots_cles</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">domaine</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">code_rome</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">appellation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">secteur_activite</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">code_naf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">experience</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">type_contrat</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nature_contrat</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">origine_offre</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">qualification</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">temps_plein</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">commune</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">departement</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inclure_limitrophes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pays_continent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">niveau_formation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">permis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">salaire_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">periode_salaire</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">acces_travailleur_handicape</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">publiee_depuis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_creation_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_creation_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">offres_mrs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">experience_exigence</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">grand_domaine</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">partenaires</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mode_selection_partenaires</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">duree_hebdo_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">duree_hebdo_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">duree_contrat_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">duree_contrat_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">duree_hebdo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">offres_manque_candidats</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">entreprises_adaptees</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">employeurs_handi_engages</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">range_param</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Search for job offers.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>mots_cles</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Keywords to search for</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>sort</code>
+            </td>
+            <td>
+                  <code><span title="france_travail_api.offres.models.search_params.Sort">Sort</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Sorting method (Sort.PERTINENCE, Sort.DATE_CREATION, Sort.DISTANCE)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>domaine</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Job domain code</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>code_rome</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>ROME code (up to 200 values, comma-separated)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>appellation</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>ROME appellation code</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>theme</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>ROME theme code</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>secteur_activite</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Activity sector (NAF division, up to 2 values)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>code_naf</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>NAF code (format 99.99X, up to 2 values)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>experience</code>
+            </td>
+            <td>
+                  <code><span title="france_travail_api.offres.models.search_params.Experience">Experience</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Experience level (Experience.NON_PRECISE, Experience.MOINS_UN_AN, etc.)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>type_contrat</code>
+            </td>
+            <td>
+                  <code><span title="france_travail_api.offres.models.contrat.CodeTypeContrat">CodeTypeContrat</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Contract type (CodeTypeContrat.CDI, CodeTypeContrat.CDD, etc.)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>nature_contrat</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Contract nature code</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>origine_offre</code>
+            </td>
+            <td>
+                  <code><span title="france_travail_api.offres.models.search_params.OrigineOffreFilter">OrigineOffreFilter</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Offer origin filter (OrigineOffreFilter.FRANCE_TRAVAIL, OrigineOffreFilter.PARTENAIRE)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>qualification</code>
+            </td>
+            <td>
+                  <code><span title="france_travail_api.offres.models.search_params.Qualification">Qualification</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Qualification level (Qualification.NON_CADRE, Qualification.CADRE)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>temps_plein</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Full-time or part-time</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>commune</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>INSEE commune code (up to 5 values, comma-separated)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>distance</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Distance radius in km around the commune</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>departement</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Department code (up to 5 values, comma-separated)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>inclure_limitrophes</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Include neighboring departments</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>region</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Region code</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>pays_continent</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Country or continent code</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>niveau_formation</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Education level code</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>permis</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Driving license code</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>salaire_min</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Minimum salary (requires periode_salaire)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>periode_salaire</code>
+            </td>
+            <td>
+                  <code><span title="france_travail_api.offres.models.search_params.PeriodeSalaire">PeriodeSalaire</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Salary period (PeriodeSalaire.MENSUEL, PeriodeSalaire.ANNUEL, etc.)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>acces_travailleur_handicape</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Accessible to workers with disabilities</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>publiee_depuis</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Published within last X days</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>min_creation_date</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Minimum creation date (format: yyyy-MM-dd'T'HH:mm:ss'Z')</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_creation_date</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Maximum creation date (format: yyyy-MM-dd'T'HH:mm:ss'Z')</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>offres_mrs</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Only offers with simulation-based recruitment method</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>experience_exigence</code>
+            </td>
+            <td>
+                  <code><span title="france_travail_api.offres.models.experience.ExperienceExigee">ExperienceExigee</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Experience requirement (ExperienceExigee.DEBUTANT_ACCEPTE, etc.)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>grand_domaine</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Major domain code</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>partenaires</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Partner codes list</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>mode_selection_partenaires</code>
+            </td>
+            <td>
+                  <code><span title="france_travail_api.offres.models.search_params.ModeSelectionPartenaires">ModeSelectionPartenaires</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Partner selection mode (ModeSelectionPartenaires.INCLUS, ModeSelectionPartenaires.EXCLU)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>duree_hebdo_min</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Minimum weekly duration (format HHMM)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>duree_hebdo_max</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Maximum weekly duration (format HHMM)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>duree_contrat_min</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Minimum contract duration in months (0-99)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>duree_contrat_max</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Maximum contract duration in months (0-99)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>duree_hebdo</code>
+            </td>
+            <td>
+                  <code><span title="france_travail_api.offres.models.search_params.DureeHebdo">DureeHebdo</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Weekly duration type (DureeHebdo.NON_PRECISE, DureeHebdo.TEMPS_PLEIN, etc.)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>offres_manque_candidats</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Filter offers difficult to fill</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>entreprises_adaptees</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Filter adapted companies for workers with disabilities</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>employeurs_handi_engages</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Filter employers committed to hiring workers with disabilities</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>range_param</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Pagination range (format: p-d, limited to 150 results)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<span title="france_travail_api.offres.models.Offre">Offre</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of job offers matching the search criteria</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">client</span> <span class="o">=</span> <span class="n">FranceTravailOffresClient</span><span class="p">(</span><span class="n">credentials</span><span class="p">,</span> <span class="n">http_client</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">mots_cles</span><span class="o">=</span><span class="s2">&quot;développeur python&quot;</span><span class="p">,</span> <span class="n">commune</span><span class="o">=</span><span class="s2">&quot;75056&quot;</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">type_contrat</span><span class="o">=</span><span class="s2">&quot;CDI&quot;</span><span class="p">)</span>
+<span class="go">[Offre(id=&quot;201WLXK&quot;, intitule=&quot;Développeur backend Python/Django (H/F)&quot;, ...)]</span>
+</code></pre></div>
+
+
+<details class="references" open>
+  <summary>References</summary>
+  <p>.. [1] France Travail API Documentation - Offres d'emploi - Rechercher des offres
+   https://francetravail.io/produits-partages/catalogue/offres-emploi/documentation#/api-reference/operations/recupererListeOffre</p>
+</details>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="france_travail_api.offres._client.FranceTravailOffresClient.search_async" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">search_async</span><span class="p">(</span><span class="n">mots_cles</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">domaine</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">code_rome</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">appellation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">secteur_activite</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">code_naf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">experience</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">type_contrat</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nature_contrat</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">origine_offre</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">qualification</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">temps_plein</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">commune</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">departement</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inclure_limitrophes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pays_continent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">niveau_formation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">permis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">salaire_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">periode_salaire</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">acces_travailleur_handicape</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">publiee_depuis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_creation_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_creation_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">offres_mrs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">experience_exigence</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">grand_domaine</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">partenaires</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mode_selection_partenaires</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">duree_hebdo_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">duree_hebdo_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">duree_contrat_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">duree_contrat_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">duree_hebdo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">offres_manque_candidats</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">entreprises_adaptees</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">employeurs_handi_engages</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">range_param</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Search for job offers asynchronously.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>mots_cles</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Keywords to search for</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>sort</code>
+            </td>
+            <td>
+                  <code><span title="france_travail_api.offres.models.search_params.Sort">Sort</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Sorting method (Sort.PERTINENCE, Sort.DATE_CREATION, Sort.DISTANCE)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>domaine</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Job domain code</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>code_rome</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>ROME code (up to 200 values, comma-separated)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>appellation</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>ROME appellation code</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>theme</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>ROME theme code</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>secteur_activite</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Activity sector (NAF division, up to 2 values)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>code_naf</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>NAF code (format 99.99X, up to 2 values)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>experience</code>
+            </td>
+            <td>
+                  <code><span title="france_travail_api.offres.models.search_params.Experience">Experience</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Experience level (Experience.NON_PRECISE, Experience.MOINS_UN_AN, etc.)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>type_contrat</code>
+            </td>
+            <td>
+                  <code><span title="france_travail_api.offres.models.contrat.CodeTypeContrat">CodeTypeContrat</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Contract type (CodeTypeContrat.CDI, CodeTypeContrat.CDD, etc.)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>nature_contrat</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Contract nature code</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>origine_offre</code>
+            </td>
+            <td>
+                  <code><span title="france_travail_api.offres.models.search_params.OrigineOffreFilter">OrigineOffreFilter</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Offer origin filter (OrigineOffreFilter.FRANCE_TRAVAIL, OrigineOffreFilter.PARTENAIRE)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>qualification</code>
+            </td>
+            <td>
+                  <code><span title="france_travail_api.offres.models.search_params.Qualification">Qualification</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Qualification level (Qualification.NON_CADRE, Qualification.CADRE)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>temps_plein</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Full-time or part-time</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>commune</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>INSEE commune code (up to 5 values, comma-separated)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>distance</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Distance radius in km around the commune</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>departement</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Department code (up to 5 values, comma-separated)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>inclure_limitrophes</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Include neighboring departments</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>region</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Region code</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>pays_continent</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Country or continent code</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>niveau_formation</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Education level code</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>permis</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Driving license code</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>salaire_min</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Minimum salary (requires periode_salaire)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>periode_salaire</code>
+            </td>
+            <td>
+                  <code><span title="france_travail_api.offres.models.search_params.PeriodeSalaire">PeriodeSalaire</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Salary period (PeriodeSalaire.MENSUEL, PeriodeSalaire.ANNUEL, etc.)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>acces_travailleur_handicape</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Accessible to workers with disabilities</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>publiee_depuis</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Published within last X days</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>min_creation_date</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Minimum creation date (format: yyyy-MM-dd'T'HH:mm:ss'Z')</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_creation_date</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Maximum creation date (format: yyyy-MM-dd'T'HH:mm:ss'Z')</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>offres_mrs</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Only offers with simulation-based recruitment method</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>experience_exigence</code>
+            </td>
+            <td>
+                  <code><span title="france_travail_api.offres.models.experience.ExperienceExigee">ExperienceExigee</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Experience requirement (ExperienceExigee.DEBUTANT_ACCEPTE, etc.)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>grand_domaine</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Major domain code</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>partenaires</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Partner codes list</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>mode_selection_partenaires</code>
+            </td>
+            <td>
+                  <code><span title="france_travail_api.offres.models.search_params.ModeSelectionPartenaires">ModeSelectionPartenaires</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Partner selection mode (ModeSelectionPartenaires.INCLUS, ModeSelectionPartenaires.EXCLU)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>duree_hebdo_min</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Minimum weekly duration (format HHMM)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>duree_hebdo_max</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Maximum weekly duration (format HHMM)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>duree_contrat_min</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Minimum contract duration in months (0-99)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>duree_contrat_max</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Maximum contract duration in months (0-99)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>duree_hebdo</code>
+            </td>
+            <td>
+                  <code><span title="france_travail_api.offres.models.search_params.DureeHebdo">DureeHebdo</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Weekly duration type (DureeHebdo.NON_PRECISE, DureeHebdo.TEMPS_PLEIN, etc.)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>offres_manque_candidats</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Filter offers difficult to fill</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>entreprises_adaptees</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Filter adapted companies for workers with disabilities</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>employeurs_handi_engages</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Filter employers committed to hiring workers with disabilities</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>range_param</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Pagination range (format: p-d, limited to 150 results)</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<span title="france_travail_api.offres.models.Offre">Offre</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of job offers matching the search criteria</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client</span> <span class="o">=</span> <span class="n">FranceTravailOffresClient</span><span class="p">(</span><span class="n">credentials</span><span class="p">,</span> <span class="n">http_client</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">search_async</span><span class="p">(</span><span class="n">mots_cles</span><span class="o">=</span><span class="s2">&quot;développeur python&quot;</span><span class="p">,</span> <span class="n">commune</span><span class="o">=</span><span class="s2">&quot;75056&quot;</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">type_contrat</span><span class="o">=</span><span class="s2">&quot;CDI&quot;</span><span class="p">))</span>
+<span class="go">[Offre(id=&quot;201WLXK&quot;, intitule=&quot;Développeur backend Python/Django (H/F)&quot;, ...)]</span>
+</code></pre></div>
+
+
+<details class="references" open>
+  <summary>References</summary>
+  <p>.. [1] France Travail API Documentation - Offres d'emploi - Rechercher des offres
+   https://francetravail.io/produits-partages/catalogue/offres-emploi/documentation#/api-reference/operations/recupererListeOffre</p>
+</details>
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
