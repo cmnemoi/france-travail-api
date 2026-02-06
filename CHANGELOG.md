@@ -2,6 +2,15 @@
 
 <!-- version list -->
 
+## v1.6.0 (2026-02-06)
+
+### Features
+
+- Add `client.offres.referentiel.appellations()` and
+  `client.offres.referentiel.appellations_async()` methods
+  ([`86acd13`](https://github.com/cmnemoi/france-travail-api/commit/86acd13a0b1097ca81023cefc67b79d89193b4e9))
+
+
 ## v1.5.0 (2026-01-25)
 
 ### Features
