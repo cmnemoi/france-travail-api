@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.7.0 (2026-02-06)
+
+### Features
+
+- Implement JSON parsing for partenaires and liste_complements
+  ([`e813c8c`](https://github.com/cmnemoi/france-travail-api/commit/e813c8cce97060362501fbd34833b6d8bc211fd1))
+
+
 ## v1.6.0 (2026-02-06)
 
 ### Features
