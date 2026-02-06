@@ -51,10 +51,21 @@ class Salaire:
     @staticmethod
     def from_dict(data: dict[str, Any]) -> "Salaire":
         """Create a Salaire from JSON data."""
+        liste_complements_data = data.get("listeComplements")
         return Salaire(
             libelle=data.get("libelle"),
             commentaire=data.get("commentaire"),
             complement1=data.get("complement1"),
             complement2=data.get("complement2"),
-            liste_complements=None,  # TODO: implement if needed
+            liste_complements=(
+                [
+                    ComplementSalaire(
+                        code=complement.get("code"),
+                        libelle=complement.get("libelle"),
+                    )
+                    for complement in liste_complements_data
+                ]
+                if liste_complements_data is not None
+                else None
+            ),
         )

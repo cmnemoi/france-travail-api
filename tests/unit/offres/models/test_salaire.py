@@ -1,6 +1,6 @@
 import pytest
 
-from france_travail_api.offres.models.salaire import Salaire
+from france_travail_api.offres.models.salaire import ComplementSalaire, Salaire
 from tests.dsl import expect
 
 
@@ -13,13 +13,30 @@ from tests.dsl import expect
                 "commentaire": "Selon expérience",
                 "complement1": "Véhicule de fonction",
                 "complement2": "Prime de vacances",
+                "listeComplements": [
+                    {"code": "14", "libelle": "Véhicule de fonction"},
+                    {"code": "15", "libelle": "Prime de vacances"},
+                ],
             },
             Salaire(
                 libelle="Mensuel de 1923.00 Euros sur 12 mois",
                 commentaire="Selon expérience",
                 complement1="Véhicule de fonction",
                 complement2="Prime de vacances",
-                liste_complements=None,
+                liste_complements=[
+                    ComplementSalaire(code="14", libelle="Véhicule de fonction"),
+                    ComplementSalaire(code="15", libelle="Prime de vacances"),
+                ],
+            ),
+        ),
+        (
+            {"libelle": "Test", "listeComplements": []},
+            Salaire(
+                libelle="Test",
+                commentaire=None,
+                complement1=None,
+                complement2=None,
+                liste_complements=[],
             ),
         ),
         (
