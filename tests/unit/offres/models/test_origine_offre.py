@@ -1,6 +1,6 @@
 import pytest
 
-from france_travail_api.offres.models.origine_offre import CodeOrigineOffre, OrigineOffre
+from france_travail_api.offres.models.origine_offre import CodeOrigineOffre, OrigineOffre, PartenaireOffre
 from tests.dsl import expect
 
 
@@ -37,12 +37,19 @@ def test_code_origine_offre_from_code_should_raise_key_error_when_code_is_invali
             {
                 "origine": "2",
                 "urlOrigine": "https://partenaire.com/offre/123",
+                "partenaires": [
+                    {"nom": "PARTENAIRE1", "url": "https://example.com", "logo": "https://logo.png"},
+                ],
             },
             OrigineOffre(
                 origine=CodeOrigineOffre.PARTENAIRE,
                 url_origine="https://partenaire.com/offre/123",
-                partenaires=None,
+                partenaires=[PartenaireOffre(nom="PARTENAIRE1", url="https://example.com", logo="https://logo.png")],
             ),
+        ),
+        (
+            {"partenaires": []},
+            OrigineOffre(origine=None, url_origine=None, partenaires=[]),
         ),
         ({}, OrigineOffre(origine=None, url_origine=None, partenaires=None)),
         (

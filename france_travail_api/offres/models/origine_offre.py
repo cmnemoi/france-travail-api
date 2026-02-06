@@ -63,8 +63,20 @@ class OrigineOffre:
     @staticmethod
     def from_dict(data: dict[str, Any]) -> "OrigineOffre":
         """Create an OrigineOffre from JSON data."""
+        partenaires_data = data.get("partenaires")
         return OrigineOffre(
             origine=CodeOrigineOffre.from_code(data["origine"]) if data.get("origine") else None,
             url_origine=data.get("urlOrigine"),
-            partenaires=None,  # TODO: implement if needed
+            partenaires=(
+                [
+                    PartenaireOffre(
+                        nom=partenaire.get("nom"),
+                        url=partenaire.get("url"),
+                        logo=partenaire.get("logo"),
+                    )
+                    for partenaire in partenaires_data
+                ]
+                if partenaires_data is not None
+                else None
+            ),
         )
