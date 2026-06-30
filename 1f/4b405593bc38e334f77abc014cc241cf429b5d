@@ -1,0 +1,32 @@
+tests/dsl/scenario.py
+  s_75bc5358146fed::t_2354eedfeb8ed0 38
+  s_75bc5358146fed::t_578d183f420468 268-273
+  s_75bc5358146fed::t_68ae1d81a2623d 133,137,141,145-149,164-170,172-177
+  s_75bc5358146fed::t_2dd61494bfe019 262-267
+  s_75bc5358146fed::t_51385248d63ce8 152-153,156-157,160-163
+  s_75bc5358146fed::t_21919204a1c380 17
+tests/unit/offres/test_referentiels_client.py
+  s_75bc5358146fed::t_cc2634c9102f76 35-40,54-60
+  s_75bc5358146fed::t_afe57983ad0eae 86-91,105-111
+tests/e2e/test_client.py
+  s_75bc5358146fed::t_26e873ff05d242 13,24,30,32,39
+tests/integration/offres/test_client.py
+  s_75bc5358146fed::t_e5b49123edf502 12
+  s_75bc5358146fed::t_109657c1577a76 15-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.4",
+  "base_commit_sha": "1f4b405593bc38e334f77abc014cc241cf429b5d",
+  "prompts": {},
+  "sessions": {
+    "s_75bc5358146fed": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c8bce869-05c9-4f0c-894f-1db3c8201c87",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Charles-Meldhine Madi Mnemoi <icdk5b4zf@relay.firefox.com>"
+    }
+  }
+}
