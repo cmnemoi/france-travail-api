@@ -32,11 +32,12 @@ def test_should_get_metiers_from_referentiel(metiers_response: HTTPResponse) -> 
         .with_offres_client()
     )
 
-    metiers = flow._offres_client.referentiels.metiers()
-
-    assert len(metiers) == 2
-    assert metiers[0] == Metier(code="D1102", libelle="Boulangerie - viennoiserie")
-    assert metiers[1] == Metier(code="M1805", libelle="Études et développement informatique")
+    flow.when_getting_metiers().then_metiers_should_be_equal(
+        [
+            Metier(code="D1102", libelle="Boulangerie - viennoiserie"),
+            Metier(code="M1805", libelle="Études et développement informatique"),
+        ]
+    )
 
 
 @pytest.mark.asyncio
@@ -50,11 +51,13 @@ async def test_should_get_metiers_from_referentiel_async(metiers_response: HTTPR
         .with_offres_client()
     )
 
-    metiers = await flow._offres_client.referentiels.metiers_async()
-    assert metiers == [
-        Metier(code="D1102", libelle="Boulangerie - viennoiserie"),
-        Metier(code="M1805", libelle="Études et développement informatique"),
-    ]
+    await flow.when_getting_metiers_async()
+    flow.then_metiers_should_be_equal(
+        [
+            Metier(code="D1102", libelle="Boulangerie - viennoiserie"),
+            Metier(code="M1805", libelle="Études et développement informatique"),
+        ]
+    )
 
 
 @pytest.fixture
@@ -80,11 +83,12 @@ def test_should_get_appellations_from_referentiel(appellations_response: HTTPRes
         .with_offres_client()
     )
 
-    appellations = flow._offres_client.referentiels.appellations()
-
-    assert len(appellations) == 2
-    assert appellations[0] == Appellation(code="11573", libelle="Boulanger / Boulangère")
-    assert appellations[1] == Appellation(code="38444", libelle="Développeur / Développeuse back-end")
+    flow.when_getting_appellations().then_appellations_should_be_equal(
+        [
+            Appellation(code="11573", libelle="Boulanger / Boulangère"),
+            Appellation(code="38444", libelle="Développeur / Développeuse back-end"),
+        ]
+    )
 
 
 @pytest.mark.asyncio
@@ -98,8 +102,10 @@ async def test_should_get_appellations_from_referentiel_async(appellations_respo
         .with_offres_client()
     )
 
-    appellations = await flow._offres_client.referentiels.appellations_async()
-    assert appellations == [
-        Appellation(code="11573", libelle="Boulanger / Boulangère"),
-        Appellation(code="38444", libelle="Développeur / Développeuse back-end"),
-    ]
+    await flow.when_getting_appellations_async()
+    flow.then_appellations_should_be_equal(
+        [
+            Appellation(code="11573", libelle="Boulanger / Boulangère"),
+            Appellation(code="38444", libelle="Développeur / Développeuse back-end"),
+        ]
+    )

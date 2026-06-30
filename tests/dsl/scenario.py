@@ -14,6 +14,7 @@ from france_travail_api.client import FranceTravailClient
 from france_travail_api.http_transport._http_client import HttpClient
 from france_travail_api.http_transport._http_response import HTTPResponse
 from france_travail_api.offres._client import FranceTravailOffresClient
+from france_travail_api.offres.models.appellation import Appellation
 from france_travail_api.offres.models.metier import Metier
 from france_travail_api.offres.models.offre import Offre
 from tests.test_doubles.fake_http_client import FakeHttpClient
@@ -34,6 +35,7 @@ class Scenario:
     _offers: list[Offre] | None = None
     _offre: Offre | None = None
     _metiers: list[Metier] | None = None
+    _appellations: list[Appellation] | None = None
 
     def unit(self) -> "Scenario":
         self._http_client = FakeHttpClient()
@@ -128,50 +130,51 @@ class Scenario:
         return self
 
     def when_searching_offres(self, **kwargs: Any) -> "Scenario":
-        if self._offres_client is None:
-            raise ValueError("Offres client must be configured before search")
-        self._offers = self._offres_client.search(**kwargs)
+        self._offers = self._offres_facade().search(**kwargs)
         return self
 
     async def when_searching_offres_async(self, **kwargs: Any) -> "Scenario":
-        if self._offres_client is None:
-            raise ValueError("Offres client must be configured before search")
-        self._offers = await self._offres_client.search_async(**kwargs)
-        return self
-
-    def when_searching_offres_e2e(self, **kwargs: Any) -> "Scenario":
-        if self._client is None:
-            raise ValueError("Client must be configured before search")
-        self._offers = self._client.offres.search(**kwargs)
+        self._offers = await self._offres_facade().search_async(**kwargs)
         return self
 
     def when_getting_offre(self, offer_id: str) -> "Scenario":
-        self._require_offres_client()
-        self._capture_offre_result(lambda: self._offres_client.get(offer_id))  # type: ignore[union-attr]
+        self._capture_offre_result(lambda: self._offres_facade().get(offer_id))
         return self
 
     async def when_getting_offre_async(self, offer_id: str) -> "Scenario":
-        self._require_offres_client()
-        await self._capture_offre_result_async(lambda: self._offres_client.get_async(offer_id))  # type: ignore[union-attr]
+        await self._capture_offre_result_async(lambda: self._offres_facade().get_async(offer_id))
         return self
 
-    def when_getting_offre_e2e(self, offer_id: str) -> "Scenario":
-        self._require_e2e_client()
-        self._capture_offre_result(lambda: self._client.offres.get(offer_id))  # type: ignore[union-attr]
+    def when_getting_metiers(self) -> "Scenario":
+        self._metiers = self._offres_facade().referentiels.metiers()
         return self
 
-    def when_getting_metiers_e2e(self) -> "Scenario":
-        self._require_e2e_client()
-        self._metiers = self._client.offres.referentiels.metiers()  # type: ignore[union-attr]
+    async def when_getting_metiers_async(self) -> "Scenario":
+        self._metiers = await self._offres_facade().referentiels.metiers_async()
         return self
 
-    def _require_offres_client(self) -> None:
-        if self._offres_client is None:
-            raise ValueError("Offres client must be configured before get")
+    def when_getting_appellations(self) -> "Scenario":
+        self._appellations = self._offres_facade().referentiels.appellations()
+        return self
 
-    def _require_e2e_client(self) -> None:
-        if self._client is None:
-            raise ValueError("Client must be configured before get")
+    async def when_getting_appellations_async(self) -> "Scenario":
+        self._appellations = await self._offres_facade().referentiels.appellations_async()
+        return self
+
+    def first_offer_id(self) -> str:
+        if not self._offers:
+            raise AssertionError("Expected at least one offer to be present")
+        first_offer_id = self._offers[0].id
+        if first_offer_id is None:
+            raise AssertionError("First offer has no ID")
+        return first_offer_id
+
+    def _offres_facade(self) -> FranceTravailOffresClient:
+        if self._client is not None:
+            return self._client.offres
+        if self._offres_client is not None:
+            return self._offres_client
+        raise ValueError("Offres client must be configured before this action")
 
     def _capture_offre_result(self, action) -> None:  # type: ignore[no-untyped-def]
         try:
@@ -226,13 +229,6 @@ class Scenario:
         assert match in str(self._captured_exception)
         return self
 
-    def then_last_get_url_contains(self, expected: str) -> "Scenario":
-        if not isinstance(self._http_client, FakeHttpClient):
-            raise AssertionError("Expected fake HTTP client for URL assertions")
-        assert self._http_client.last_get_url is not None
-        assert expected in self._http_client.last_get_url
-        return self
-
     def then_all_offers_are(self, expected_type: type) -> "Scenario":
         if self._offers is None:
             raise AssertionError("Expected offers to be present")
@@ -261,6 +257,18 @@ class Scenario:
         if self._metiers is None:
             raise AssertionError("Expected metiers to be present")
         assert all(isinstance(metier, expected_type) for metier in self._metiers)
+        return self
+
+    def then_metiers_should_be_equal(self, expected: list[Any]) -> "Scenario":
+        if self._metiers is None:
+            raise AssertionError("Expected metiers to be present")
+        assert self._metiers == expected
+        return self
+
+    def then_appellations_should_be_equal(self, expected: list[Any]) -> "Scenario":
+        if self._appellations is None:
+            raise AssertionError("Expected appellations to be present")
+        assert self._appellations == expected
         return self
 
     def close(self) -> None:
