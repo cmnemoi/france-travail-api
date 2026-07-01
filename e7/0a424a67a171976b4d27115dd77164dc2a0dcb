@@ -1,0 +1,47 @@
+tests/unit/offres/test_referentiels_client.py
+  s_c8e82fceae3455::t_6394eca889ef12 8,31,54,77
+  s_c8e82fceae3455::t_da989172dd87c6 17-22,40-45,63-68,86-91
+  h_32f94e59e2f995 12,35,58,81
+tests/dsl/scenario.py
+  s_c8e82fceae3455::t_e2753327a7e03a 281-356
+  s_c8e82fceae3455::t_50e6a2c6c57033 99,104,110,113
+  h_32f94e59e2f995 72
+  s_c8e82fceae3455::t_70f93c4f1a2a8c 6-7,73-79,82,88-90,93-98,100-103,106-109,111-112
+  s_c8e82fceae3455::t_bd33ef264e924a 105
+tests/unit/test_credentials.py
+  h_32f94e59e2f995 13,31-32,57
+  s_c8e82fceae3455::t_d359f83eac6b38 48
+tests/integration/http_transport/test_http_client.py
+  s_c8e82fceae3455::t_03e29d337b71f3 27-31
+tests/integration/http_transport/test_http_client_async.py
+  h_32f94e59e2f995 34-36
+tests/e2e/test_client.py
+  s_c8e82fceae3455::t_13a62216bc95db 22
+tests/test_doubles/fake_http_client.py
+  s_c8e82fceae3455::t_1e2f88c2a54937 1-4,17-25
+  s_c8e82fceae3455::t_2fcd5c79ac7a24 26
+tests/unit/offres/test_client.py
+  s_c8e82fceae3455::t_703bf237177df1 37,42,94,123-129,133-247,250-251,303,308-362,436-489,495-496,551,556
+  h_32f94e59e2f995 32,298,416,421,431
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "e70a424a67a171976b4d27115dd77164dc2a0dcb",
+  "prompts": {},
+  "humans": {
+    "h_32f94e59e2f995": {
+      "author": "Charles-Meldhine Madi Mnemoi <icdk5b4zf@relay.firefox.com>"
+    }
+  },
+  "sessions": {
+    "s_c8e82fceae3455": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_0e5f8770cffeu3rv402yGvcl6a",
+        "model": "gpt-5.4"
+      },
+      "human_author": "Charles-Meldhine Madi Mnemoi <icdk5b4zf@relay.firefox.com>"
+    }
+  }
+}
