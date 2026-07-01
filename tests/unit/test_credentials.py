@@ -10,7 +10,7 @@ def test_should_return_token() -> None:
     flow = (
         scenario()
         .unit()
-        .with_token_response()
+        .with_valid_token()
         .with_credentials(client_id="client-id", client_secret="client-secret", scopes=[Scope.OFFRES])
     )
 
@@ -28,8 +28,8 @@ def test_should_return_cached_token_if_not_expired() -> None:
     flow = (
         scenario()
         .unit()
-        .with_token_response(access_token="my_token1")
-        .with_token_response(access_token="my_token2")
+        .with_valid_token(access_token="my_token1")
+        .with_valid_token(access_token="my_token2")
         .with_credentials(client_id="client-id", client_secret="client-secret", scopes=[Scope.OFFRES])
     )
 
@@ -45,7 +45,7 @@ def test_should_return_cached_token_if_not_expired() -> None:
 
 
 def test_should_raise_base_exception_when_http_client_returns_error() -> None:
-    scenario().unit().with_error_response().with_credentials(
+    scenario().unit().given_token_error().with_credentials(
         client_id="client-id", client_secret="client-secret", scopes=[Scope.OFFRES]
     ).when_get_token().then_exception_is(
         FranceTravailException,
@@ -54,6 +54,6 @@ def test_should_raise_base_exception_when_http_client_returns_error() -> None:
 
 
 def test_should_return_authorization_header() -> None:
-    scenario().unit().with_token_response().with_credentials(
+    scenario().unit().with_valid_token().with_credentials(
         client_id="client-id", client_secret="client-secret", scopes=[Scope.OFFRES]
     ).when_authorization_header().then_authorization_header_is({"Authorization": "Bearer my_token"})

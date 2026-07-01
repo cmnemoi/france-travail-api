@@ -24,9 +24,11 @@ def test_http_client_get_includes_request_id() -> None:
 @pytest.mark.integration
 def test_http_client_get_with_custom_headers() -> None:
     with http_scenario().integration() as flow:
-        flow.when_get("https://httpbin.org/headers", headers={"X-Custom-Header": "test-value"}).then_body_contains(
-            ["headers", "Host"], "httpbin.org"
-        ).then_body_contains(["headers", "X-Custom-Header"], "test-value")
+        flow.when_get(
+            "https://postman-echo.com/headers", headers={"X-Custom-Header": "test-value"}
+        ).then_body_contains(["headers", "host"], "postman-echo.com").then_body_contains(
+            ["headers", "x-custom-header"], "test-value"
+        )
 
 
 @pytest.mark.integration

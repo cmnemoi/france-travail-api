@@ -31,9 +31,9 @@ async def test_http_client_get_async_includes_request_id() -> None:
 @pytest.mark.asyncio
 async def test_http_client_get_async_with_custom_headers() -> None:
     flow = http_scenario().integration()
-    await flow.when_get_async("https://httpbin.org/headers", headers={"X-Custom-Header": "test-value"})
-    flow.then_body_contains(["headers", "Host"], "httpbin.org").then_body_contains(
-        ["headers", "X-Custom-Header"], "test-value"
+    await flow.when_get_async("https://postman-echo.com/headers", headers={"X-Custom-Header": "test-value"})
+    flow.then_body_contains(["headers", "host"], "postman-echo.com").then_body_contains(
+        ["headers", "x-custom-header"], "test-value"
     )
     flow.close()
 

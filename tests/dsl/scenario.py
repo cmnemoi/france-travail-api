@@ -3,8 +3,8 @@ from __future__ import annotations
 import datetime
 import http
 import os
-import uuid
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, fields, is_dataclass
+from enum import Enum
 from typing import Any
 
 from france_travail_api.auth._credentials import FranceTravailCredentials
@@ -12,7 +12,6 @@ from france_travail_api.auth._token import Token
 from france_travail_api.auth.scope import Scope
 from france_travail_api.client import FranceTravailClient
 from france_travail_api.http_transport._http_client import HttpClient
-from france_travail_api.http_transport._http_response import HTTPResponse
 from france_travail_api.offres._client import FranceTravailOffresClient
 from france_travail_api.offres.models.appellation import Appellation
 from france_travail_api.offres.models.metier import Metier
@@ -70,41 +69,48 @@ class Scenario:
             scopes=scopes,
         )
 
-    def with_token_response(self, access_token: str = "my_token", expires_in: int = 1_499) -> "Scenario":
-        return self.with_http_response(
-            HTTPResponse(
-                status_code=http.HTTPStatus.OK,
-                body={
-                    "scope": "api_offresdemploiv2 o2dsoffre",
-                    "expires_in": expires_in,
-                    "token_type": "Bearer",
-                    "access_token": access_token,
-                },
-                headers={},
-                request_id=uuid.uuid4(),
-            )
+    def with_valid_token(self, access_token: str = "my_token", expires_in: int = 1_499) -> "Scenario":
+        return self._queue_json_response(
+            {
+                "scope": "api_offresdemploiv2 o2dsoffre",
+                "expires_in": expires_in,
+                "token_type": "Bearer",
+                "access_token": access_token,
+            }
         )
 
-    def with_error_response(
+    def given_token_error(
         self,
         status_code: http.HTTPStatus = http.HTTPStatus.BAD_REQUEST,
         error: str = "unknown_error",
         description: str = "An unknown error occurred",
     ) -> "Scenario":
-        return self.with_http_response(
-            HTTPResponse(
-                status_code=status_code,
-                body={"error": error, "error_description": description},
-                headers={},
-                request_id=uuid.uuid4(),
-            )
+        return self._queue_json_response(
+            {"error": error, "error_description": description},
+            status_code=status_code,
         )
 
-    def with_http_response(self, response: HTTPResponse) -> "Scenario":
-        if not isinstance(self._http_client, FakeHttpClient):
-            self._http_client = FakeHttpClient()
-        self._http_client.add_response(response)
-        return self
+    def given_offers_found(
+        self,
+        offers: list[Offre],
+        status_code: http.HTTPStatus = http.HTTPStatus.PARTIAL_CONTENT,
+    ) -> "Scenario":
+        return self._queue_json_response(
+            {"resultats": [self._serialize_api_value(offer) for offer in offers]},
+            status_code=status_code,
+        )
+
+    def given_offer_found(self, offer: Offre) -> "Scenario":
+        return self._queue_json_response(self._serialize_api_value(offer))
+
+    def given_offer_not_found(self) -> "Scenario":
+        return self._queue_json_response({}, status_code=http.HTTPStatus.NO_CONTENT)
+
+    def given_metiers(self, metiers: list[Metier]) -> "Scenario":
+        return self._queue_json_response([self._serialize_api_value(metier) for metier in metiers])
+
+    def given_appellations(self, appellations: list[Appellation]) -> "Scenario":
+        return self._queue_json_response([self._serialize_api_value(appellation) for appellation in appellations])
 
     def with_offres_client(self) -> "Scenario":
         if self._credentials is None:
@@ -168,25 +174,6 @@ class Scenario:
         if first_offer_id is None:
             raise AssertionError("First offer has no ID")
         return first_offer_id
-
-    def _offres_facade(self) -> FranceTravailOffresClient:
-        if self._client is not None:
-            return self._client.offres
-        if self._offres_client is not None:
-            return self._offres_client
-        raise ValueError("Offres client must be configured before this action")
-
-    def _capture_offre_result(self, action) -> None:  # type: ignore[no-untyped-def]
-        try:
-            self._offre = action()
-        except Exception as exc:
-            self._captured_exception = exc
-
-    async def _capture_offre_result_async(self, action) -> None:  # type: ignore[no-untyped-def]
-        try:
-            self._offre = await action()
-        except Exception as exc:
-            self._captured_exception = exc
 
     def then_token_is(self, expected: Any) -> "Scenario":
         assert self._token == expected
@@ -290,6 +277,82 @@ class Scenario:
 
     def __exit__(self, exc_type, exc_val, exc_tb) -> None:
         self.close()
+
+    def _offres_facade(self) -> FranceTravailOffresClient:
+        if self._client is not None:
+            return self._client.offres
+        if self._offres_client is not None:
+            return self._offres_client
+        raise ValueError("Offres client must be configured before this action")
+
+    def _capture_offre_result(self, action) -> None:  # type: ignore[no-untyped-def]
+        try:
+            self._offre = action()
+        except Exception as exc:
+            self._captured_exception = exc
+
+    async def _capture_offre_result_async(self, action) -> None:  # type: ignore[no-untyped-def]
+        try:
+            self._offre = await action()
+        except Exception as exc:
+            self._captured_exception = exc
+
+    def _queue_json_response(self, body: Any, status_code: http.HTTPStatus = http.HTTPStatus.OK) -> "Scenario":
+        self._fake_http_client().add_json_response(body=body, status_code=status_code)
+        return self
+
+    def _fake_http_client(self) -> FakeHttpClient:
+        if not isinstance(self._http_client, FakeHttpClient):
+            self._http_client = FakeHttpClient()
+        return self._http_client
+
+    @staticmethod
+    def _field_name_to_api_key(field_name: str) -> str:
+        special_cases = {
+            "accessible_th": "accessibleTH",
+            "appellation_libelle": "appellationlibelle",
+            "code_naf": "codeNAF",
+        }
+        if field_name in special_cases:
+            return special_cases[field_name]
+
+        head, *tail = field_name.split("_")
+        return head + "".join(part.capitalize() for part in tail)
+
+    @staticmethod
+    def _serialize_enum(value: Enum) -> str:
+        if hasattr(value, "to_api_value"):
+            return value.to_api_value()  # type: ignore[no-any-return]
+
+        if type(value).__name__ == "Exigence":
+            return {"OBLIGATOIRE": "E", "SOUHAITE": "S"}[value.name]
+
+        if type(value).__name__ == "CodeOrigineOffre":
+            return {"FRANCE_TRAVAIL": "1", "PARTENAIRE": "2"}[value.name]
+
+        return str(value.value)
+
+    @staticmethod
+    def _serialize_api_value(value: Any) -> Any:
+        if isinstance(value, datetime.datetime):
+            return value.isoformat().replace("+00:00", "Z")
+
+        if isinstance(value, Enum):
+            return Scenario._serialize_enum(value)
+
+        if isinstance(value, list):
+            return [Scenario._serialize_api_value(item) for item in value]
+
+        if is_dataclass(value) and not isinstance(value, type):
+            data: dict[str, Any] = {}
+            for item in fields(value):
+                serialized = Scenario._serialize_api_value(getattr(value, item.name))
+                if serialized is None or serialized == [] or serialized == {}:
+                    continue
+                data[Scenario._field_name_to_api_key(item.name)] = serialized
+            return data
+
+        return value
 
 
 def scenario() -> Scenario:

@@ -1,3 +1,7 @@
+import http
+import uuid
+from typing import Any
+
 from france_travail_api.http_transport._http_response import HTTPResponse
 
 
@@ -9,6 +13,16 @@ class FakeHttpClient:
 
     def add_response(self, response: HTTPResponse) -> None:
         self.responses.append(response)
+
+    def add_json_response(self, body: Any, status_code: http.HTTPStatus = http.HTTPStatus.OK) -> None:
+        self.add_response(
+            HTTPResponse(
+                status_code=status_code,
+                body=body,
+                headers={},
+                request_id=uuid.uuid4(),
+            )
+        )
 
     def get(self, url: str, headers: dict[str, str] | None = None) -> HTTPResponse:
         self.last_get_url = url
